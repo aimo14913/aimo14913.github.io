@@ -1510,116 +1510,73 @@
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // 🚀 太空人吉祥物：自主行走 + 滑鼠靠近 hover 跟 + 點擊跳
+    // 🐾 aimo 吉祥物：全程平滑跟著滑鼠跑 + 閒置自主散步 + 點擊跳
     (function() {
       const mascot = document.getElementById('mascot');
       if (!mascot) return;
       if (!window.matchMedia('(hover: hover)').matches) return;
 
-      let currentX = 100;
-      let targetX  = 200;
-      let isWaiting = false;
-      let isFollowingMouse = false;
+      const MASCOT_W = 108;
+      const MARGIN_X = 18;
+      const FOLLOW = 0.14;        // 跟滑鼠的平滑度（越大貼越快）
+      const STROLL = 0.03;        // 閒置散步的平滑度（慢慢晃）
+      const IDLE_AFTER = 2200;    // 滑鼠靜止多久(ms)後改自主散步
+
+      let currentX = window.innerWidth / 2;
       let mouseX = null;
+      let lastMove = -99999;
+      let strollX = currentX;
       let isJumping = false;
-      const SPEED = 1.2;            // px per frame (~60fps)
-      const FOLLOW_RANGE = 280;     // 滑鼠在底部 + 距離角色 N px 內才跟
-      const BOTTOM_ZONE_HEIGHT = 220;
-      const MARGIN_X = 30;
-      const HOVER_OFFSET = 40;      // 跟滑鼠時保持一點距離
 
-      function chooseNextTarget() {
-        const minX = MARGIN_X;
-        const maxX = window.innerWidth - 80 - MARGIN_X;
-        // 不要原地踏步：新目標跟當前位置至少 200px
-        let next;
-        let tries = 0;
-        do {
-          next = Math.random() * (maxX - minX) + minX;
-          tries++;
-        } while (Math.abs(next - currentX) < 200 && tries < 5);
-        targetX = next;
+      function clampX(x) {
+        return Math.max(MARGIN_X, Math.min(window.innerWidth - MASCOT_W - MARGIN_X, x));
       }
-
-      function pause(duration) {
-        isWaiting = true;
-        mascot.classList.remove('walking');
-        setTimeout(() => {
-          isWaiting = false;
-          chooseNextTarget();
-        }, duration);
+      function newStroll() {
+        strollX = Math.random() * (window.innerWidth - MASCOT_W - MARGIN_X * 2) + MARGIN_X;
       }
+      newStroll();
 
-      function animate() {
-        if (isJumping) {
-          requestAnimationFrame(animate);
-          return;
-        }
-
-        // 滑鼠靠近時改跟滑鼠
-        if (isFollowingMouse && mouseX !== null) {
-          targetX = mouseX - HOVER_OFFSET;
-        }
-
-        if (!isWaiting) {
+      function loop() {
+        if (!isJumping) {
+          const idle = (performance.now() - lastMove > IDLE_AFTER) || mouseX === null;
+          const targetX = idle ? strollX : clampX(mouseX - MASCOT_W / 2);
           const dx = targetX - currentX;
-          if (Math.abs(dx) > 3) {
-            currentX += Math.sign(dx) * SPEED;
+          currentX += dx * (idle ? STROLL : FOLLOW);
+
+          if (Math.abs(dx) > 1.2) {
             mascot.classList.add('walking');
-            if (dx < 0) mascot.classList.add('flip');
-            else        mascot.classList.remove('flip');
+            mascot.classList.toggle('flip', dx < 0);   // 往左追就翻身朝左
           } else {
-            currentX = targetX;
             mascot.classList.remove('walking');
-            if (!isFollowingMouse) {
-              // 隨機暫停 2-5 秒
-              const dur = 2000 + Math.random() * 3000;
-              pause(dur);
-            }
+            if (idle) newStroll();                      // 散步走到了就換下一個點
           }
+          mascot.style.transform = 'translateX(' + currentX + 'px)';
         }
-
-        mascot.style.transform = `translateX(${currentX}px)`;
-        requestAnimationFrame(animate);
+        requestAnimationFrame(loop);
       }
+      requestAnimationFrame(loop);
 
-      // 起跑：選個初始目標再開始走
-      chooseNextTarget();
-      animate();
-
-      // 滑鼠靠近偵測（底部 220px 範圍 + 水平 280px 內）
-      document.addEventListener('mousemove', (e) => {
-        const bottomThreshold = window.innerHeight - BOTTOM_ZONE_HEIGHT;
-        if (e.clientY > bottomThreshold) {
-          const dist = Math.abs(e.clientX - currentX);
-          if (dist < FOLLOW_RANGE) {
-            isFollowingMouse = true;
-            mouseX = e.clientX;
-            isWaiting = false;  // 滑鼠靠近時打斷暫停
-            return;
-          }
-        }
-        isFollowingMouse = false;
-        mouseX = null;
+      // 滑鼠一動，吉祥物就全程跟（不限區域、不限距離）
+      document.addEventListener('mousemove', function(e) {
+        mouseX = e.clientX;
+        lastMove = performance.now();
       });
 
-      // 點擊跳
-      mascot.addEventListener('click', () => {
+      // 點一下會跳
+      mascot.addEventListener('click', function() {
         if (isJumping) return;
         isJumping = true;
         mascot.classList.add('jump');
         mascot.classList.remove('walking');
-        setTimeout(() => {
+        setTimeout(function() {
           mascot.classList.remove('jump');
           isJumping = false;
         }, 700);
       });
 
-      // 視窗縮放時重選目標（避免目標跑到畫面外）
-      window.addEventListener('resize', () => {
-        if (targetX > window.innerWidth - 80) {
-          chooseNextTarget();
-        }
+      window.addEventListener('resize', function() {
+        currentX = clampX(currentX);
+        newStroll();
       });
     })();
 
