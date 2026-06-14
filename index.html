@@ -1510,73 +1510,53 @@
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // 🐾 aimo 吉祥物：全程平滑跟著滑鼠跑 + 閒置自主散步 + 點擊跳
+    // 🐾 aimo 吉祥物：像小精靈一樣「飄著追游標」(左右上下全跟) + 點頁面會跳
     (function() {
       const mascot = document.getElementById('mascot');
       if (!mascot) return;
       if (!window.matchMedia('(hover: hover)').matches) return;
 
-      const MASCOT_W = 108;
-      const MARGIN_X = 18;
-      const FOLLOW = 0.14;        // 跟滑鼠的平滑度（越大貼越快）
-      const STROLL = 0.03;        // 閒置散步的平滑度（慢慢晃）
-      const IDLE_AFTER = 2200;    // 滑鼠靜止多久(ms)後改自主散步
+      // 改成「貼著游標飄」的定位基準（脫離底部）
+      mascot.style.bottom = 'auto';
+      mascot.style.top = '0';
+      mascot.style.left = '0';
+      mascot.style.pointerEvents = 'none';   // 純視覺跟隨，不擋頁面點擊
 
-      let currentX = window.innerWidth / 2;
-      let mouseX = null;
-      let lastMove = -99999;
-      let strollX = currentX;
+      const MW = 108, MH = 100;
+      const OFFSET_X = 26;    // 飄在游標右邊一點
+      const OFFSET_Y = 34;    // 飄在游標下方一點
+      const FOLLOW = 0.16;    // 追蹤平滑度（越大貼越緊）
+
+      let curX = window.innerWidth / 2, curY = window.innerHeight / 2;
+      let tgtX = curX, tgtY = curY;
+      let lastDir = 1;
       let isJumping = false;
 
-      function clampX(x) {
-        return Math.max(MARGIN_X, Math.min(window.innerWidth - MASCOT_W - MARGIN_X, x));
-      }
-      function newStroll() {
-        strollX = Math.random() * (window.innerWidth - MASCOT_W - MARGIN_X * 2) + MARGIN_X;
-      }
-      newStroll();
-
       function loop() {
-        if (!isJumping) {
-          const idle = (performance.now() - lastMove > IDLE_AFTER) || mouseX === null;
-          const targetX = idle ? strollX : clampX(mouseX - MASCOT_W / 2);
-          const dx = targetX - currentX;
-          currentX += dx * (idle ? STROLL : FOLLOW);
-
-          if (Math.abs(dx) > 1.2) {
-            mascot.classList.add('walking');
-            mascot.classList.toggle('flip', dx < 0);   // 往左追就翻身朝左
-          } else {
-            mascot.classList.remove('walking');
-            if (idle) newStroll();                      // 散步走到了就換下一個點
-          }
-          mascot.style.transform = 'translateX(' + currentX + 'px)';
-        }
+        curX += (tgtX - curX) * FOLLOW;
+        curY += (tgtY - curY) * FOLLOW;
+        const dx = tgtX - curX, dy = tgtY - curY;
+        if (Math.abs(dx) > 0.5) lastDir = dx < 0 ? -1 : 1;
+        mascot.classList.toggle('flip', lastDir < 0);   // 往左追就翻身朝左
+        if (Math.abs(dx) + Math.abs(dy) > 1.5) mascot.classList.add('walking');
+        else mascot.classList.remove('walking');
+        mascot.style.transform = 'translate(' + curX + 'px,' + curY + 'px)';
         requestAnimationFrame(loop);
       }
       requestAnimationFrame(loop);
 
-      // 滑鼠一動，吉祥物就全程跟（不限區域、不限距離）
+      // 滑鼠到畫面哪裡（含上下），她就飄到哪裡追你
       document.addEventListener('mousemove', function(e) {
-        mouseX = e.clientX;
-        lastMove = performance.now();
+        tgtX = Math.min(Math.max(e.clientX + OFFSET_X, 4), window.innerWidth - MW - 4);
+        tgtY = Math.min(Math.max(e.clientY + OFFSET_Y, 4), window.innerHeight - MH - 4);
       });
 
-      // 點一下會跳
-      mascot.addEventListener('click', function() {
+      // 點頁面任何地方，她跳一下（她 pointer-events:none，改用全域點擊）
+      document.addEventListener('mousedown', function() {
         if (isJumping) return;
         isJumping = true;
         mascot.classList.add('jump');
-        mascot.classList.remove('walking');
-        setTimeout(function() {
-          mascot.classList.remove('jump');
-          isJumping = false;
-        }, 700);
-      });
-
-      window.addEventListener('resize', function() {
-        currentX = clampX(currentX);
-        newStroll();
+        setTimeout(function() { mascot.classList.remove('jump'); isJumping = false; }, 700);
       });
     })();
 
