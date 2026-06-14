@@ -1120,6 +1120,7 @@
       }
     }
   </style>
+<style>.mascot{width:108px !important;height:100px !important;}.mascot img.mascot-body{object-fit:contain;filter:drop-shadow(0 6px 10px rgba(0,0,0,.3));}</style>
 </head>
 <body>
 
@@ -1427,48 +1428,11 @@
   <!--
     暫代品：SVG 簡化版太空人。
     未來替換真實 PNG：把 aimo 提供的太空人 PNG 存到 04.素材库/aimo-mascot-spaceman.png，
-    然後把下方 <svg class="mascot-body">...</svg> 換成 <img class="mascot-body" src="../aimo-mascot-spaceman.png" alt="aimo 吉祥物">
+    然後把下方 <img class="mascot-body" src="aimo-mascot.png" alt="aimo 吉祥物"> 換成 <img class="mascot-body" src="../aimo-mascot-spaceman.png" alt="aimo 吉祥物">
   -->
   <div class="mascot" id="mascot" aria-label="aimo 吉祥物">
-    <div class="mascot-bubble">Hi！我是 aimo 的吉祥物 👾</div>
-    <svg class="mascot-body" viewBox="0 0 60 100" xmlns="http://www.w3.org/2000/svg">
-      <!-- 地面陰影 -->
-      <ellipse cx="30" cy="97" rx="18" ry="2.5" fill="rgba(0,0,0,0.18)"/>
-      <!-- 頭髮（黑色蓬鬆瀏海） -->
-      <path d="M12 22 Q10 7 30 5 Q50 7 48 22 L48 27 Q44 22 38 22 L22 22 Q16 22 12 27 Z" fill="#1A1A1A"/>
-      <!-- 臉 -->
-      <ellipse cx="30" cy="28" rx="13" ry="11" fill="#FFD9B8"/>
-      <!-- 眼睛 -->
-      <ellipse cx="24" cy="28" rx="2" ry="2.6" fill="#1A1A1A"/>
-      <ellipse cx="36" cy="28" rx="2" ry="2.6" fill="#1A1A1A"/>
-      <circle cx="23.5" cy="27" r="0.6" fill="#fff"/>
-      <circle cx="35.5" cy="27" r="0.6" fill="#fff"/>
-      <!-- 嘴 -->
-      <path d="M26 36 Q30 38.5 34 36" stroke="#1A1A1A" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-      <!-- 脖子 -->
-      <rect x="26" y="38" width="8" height="4" fill="#FFD9B8"/>
-      <!-- 太空裝身體 -->
-      <rect x="13" y="42" width="34" height="36" rx="8" fill="#E8EAF0"/>
-      <!-- 太空裝左側陰影 -->
-      <path d="M13 50 Q13 42 17 42 L18 78 L13 78 Z" fill="#D0D4DC"/>
-      <!-- BB 胸標 -->
-      <rect x="22" y="52" width="16" height="11" rx="2" fill="#5A6068"/>
-      <text x="30" y="61" text-anchor="middle" fill="#fff" font-size="8" font-weight="900" font-family="sans-serif">BB</text>
-      <!-- 拉鏈線 -->
-      <line x1="30" y1="42" x2="30" y2="52" stroke="#B0B5BD" stroke-width="0.8"/>
-      <!-- 手臂左（叉腰） -->
-      <path d="M13 50 Q5 60 12 70 Q14 65 18 60 L18 52 Z" fill="#E8EAF0"/>
-      <circle cx="11" cy="68" r="3" fill="#FFD9B8"/>
-      <!-- 手臂右（叉腰） -->
-      <path d="M47 50 Q55 60 48 70 Q46 65 42 60 L42 52 Z" fill="#E8EAF0"/>
-      <circle cx="49" cy="68" r="3" fill="#FFD9B8"/>
-      <!-- 腿 -->
-      <rect x="17" y="78" width="11" height="16" rx="3" fill="#E8EAF0"/>
-      <rect x="32" y="78" width="11" height="16" rx="3" fill="#E8EAF0"/>
-      <!-- 鞋 -->
-      <ellipse cx="22.5" cy="94" rx="8" ry="3.5" fill="#5A6068"/>
-      <ellipse cx="37.5" cy="94" rx="8" ry="3.5" fill="#5A6068"/>
-    </svg>
+    <div class="mascot-bubble">Hi！我是 aimo 👋</div>
+    <img class="mascot-body" src="aimo-mascot.png" alt="aimo 吉祥物">
   </div>
 
   <!-- ===================== 浮動聊天按鈕 ===================== -->
