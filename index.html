@@ -1,0 +1,1687 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>aimo · 教普通人用 AI 搭系統</title>
+  <meta name="description" content="把想法變成可複用的內容資產。aimo 的 AI 短劇實戰工作室。">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* v3 鎖定色票 */
+      --oat:       #EDE5D3;
+      --oat-2:     #E6DCC5;
+      --ink:       #2A241E;
+      --ink-soft:  #5C5249;
+      --burn:      #D9522A;
+      --black:     #1A1A1A;
+      --peach:     #F2D9C0;
+      --caramel:   #D9A88A;
+      --line:      rgba(42, 36, 30, 0.15);
+
+      /* 動態主題變數（淺色模式預設） */
+      --bg:        var(--oat);
+      --bg-2:      var(--oat-2);
+      --fg:        var(--ink);
+      --fg-soft:   var(--ink-soft);
+      --border:    var(--line);
+      --card:      var(--oat-2);
+      --dot-color: rgba(42, 36, 30, 0.025);
+
+      --sans:  'Noto Sans TC', 'Inter', sans-serif;
+      --serif: 'Cormorant Garamond', 'Noto Serif TC', serif;
+      --mono:  'JetBrains Mono', monospace;
+    }
+
+    [data-theme="dark"] {
+      --bg:        var(--black);
+      --bg-2:      #232220;
+      --fg:        var(--oat);
+      --fg-soft:   rgba(237, 229, 211, 0.65);
+      --border:    rgba(237, 229, 211, 0.12);
+      --card:      #1F1E1C;
+      --dot-color: rgba(237, 229, 211, 0.03);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      transition: background .4s ease, color .4s ease;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
+      background-size: 5px 5px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .it { font-family: var(--serif); font-style: italic; font-weight: 600; }
+    .container { max-width: 1240px; margin: 0 auto; padding: 0 40px; }
+    .container-narrow { max-width: 980px; margin: 0 auto; padding: 0 40px; }
+
+    /* ============================================================
+       NAV
+    ============================================================ */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 16px 40px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    nav .logo {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 700;
+      font-size: 24px;
+      color: var(--fg);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      flex-shrink: 0;
+    }
+    nav .logo .dot { color: var(--burn); }
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 28px;
+      flex: 1;
+    }
+    nav ul a {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--fg);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      opacity: 0.7;
+      transition: opacity .2s, color .2s;
+    }
+    nav ul a:hover { opacity: 1; color: var(--burn); }
+    nav ul a.ext-link {
+      color: var(--burn);
+      font-weight: 700;
+      opacity: 0.85;
+    }
+    nav ul a.ext-link:hover { opacity: 1; }
+
+    nav .tools {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    nav .lang {
+      display: flex;
+      font-family: var(--mono);
+      font-size: 11px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    nav .lang a {
+      padding: 6px 10px;
+      color: var(--fg-soft);
+      text-decoration: none;
+      transition: background .2s;
+    }
+    nav .lang a.active { background: var(--fg); color: var(--bg); }
+    nav .theme-toggle {
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color .2s;
+      color: var(--fg);
+      font-size: 14px;
+    }
+    nav .theme-toggle:hover { border-color: var(--burn); }
+    nav .cta {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--bg);
+      background: var(--fg);
+      padding: 9px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: background .2s;
+    }
+    nav .cta:hover { background: var(--burn); color: #fff; }
+
+    @media (max-width: 900px) {
+      nav ul { display: none; }
+    }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+      position: relative;
+      padding: 80px 0 100px;
+      z-index: 2;
+    }
+    .hero .kicker {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--fg);
+      opacity: 0.55;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hero .kicker .pulse {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--burn);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.4); }
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 500;
+      font-size: clamp(56px, 9vw, 124px);
+      line-height: 0.98;
+      letter-spacing: -0.035em;
+      color: var(--fg);
+      margin-bottom: 12px;
+      max-width: 1100px;
+    }
+    .hero h1 .burn { color: var(--burn); }
+    .hero h1 .em {
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+    }
+    .hero h1 .em::after {
+      content: "";
+      position: absolute;
+      left: -4px; right: -4px;
+      bottom: 10px;
+      height: 18px;
+      background: var(--peach);
+      z-index: -1;
+      transform: rotate(-1deg);
+    }
+    [data-theme="dark"] .hero h1 .em::after { background: var(--caramel); opacity: 0.7; }
+
+    .hero h2 {
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: clamp(20px, 2.4vw, 30px);
+      color: var(--fg);
+      opacity: 0.85;
+      letter-spacing: -0.01em;
+      margin-bottom: 40px;
+    }
+
+    .hero p.lead {
+      font-family: var(--sans);
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--fg-soft);
+      max-width: 580px;
+      margin-bottom: 48px;
+      line-height: 1.85;
+    }
+    .hero p.lead strong { color: var(--fg); font-weight: 700; }
+
+    .hero .ctas {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 14px 24px;
+      border-radius: 8px;
+      letter-spacing: 0.04em;
+      transition: all .2s;
+      border: 1px solid transparent;
+    }
+    .btn-primary {
+      background: var(--fg);
+      color: var(--bg);
+    }
+    .btn-primary:hover {
+      background: var(--burn);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    .btn-ghost {
+      color: var(--fg);
+      border-color: var(--border);
+    }
+    .btn-ghost:hover { border-color: var(--fg); }
+    .btn-arrow {
+      color: var(--fg);
+      background: transparent;
+      padding: 14px 4px;
+    }
+    .btn-arrow:hover { color: var(--burn); }
+
+    /* 跨站 CTA（連到第二站）— 用深色描邊呼應第二站視覺 */
+    .btn-cross-site {
+      border: 1px dashed var(--border) !important;
+      padding: 13px 22px !important;
+      color: var(--fg) !important;
+      background: transparent !important;
+      transition: all .25s;
+    }
+    .btn-cross-site:hover {
+      border-color: var(--fg) !important;
+      border-style: solid !important;
+      background: var(--card) !important;
+      transform: translateY(-2px);
+    }
+
+    .hero-meta {
+      margin-top: 60px;
+      padding-top: 32px;
+      border-top: 1px dashed var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--fg-soft);
+      letter-spacing: 0.04em;
+    }
+    .hero-meta .visit {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 700;
+      font-size: 32px;
+      color: var(--fg);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .hero-meta .visit-label {
+      display: block;
+      font-family: var(--mono);
+      font-style: normal;
+      font-weight: 500;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--fg-soft);
+      margin-top: 6px;
+    }
+
+    /* ============================================================
+       MARQUEE BAND
+    ============================================================ */
+    .marquee {
+      background: var(--black);
+      color: var(--oat);
+      padding: 18px 0;
+      overflow: hidden;
+      position: relative;
+      z-index: 2;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .marquee-track {
+      display: flex;
+      gap: 48px;
+      white-space: nowrap;
+      animation: scroll 40s linear infinite;
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 600;
+      font-size: 22px;
+      letter-spacing: -0.01em;
+    }
+    .marquee-track .dot {
+      color: var(--burn);
+      font-weight: 900;
+    }
+    @keyframes scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ============================================================
+       SECTION 共用
+    ============================================================ */
+    section { padding: 120px 0; position: relative; z-index: 2; }
+    .section-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--burn);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-label::before {
+      content: "";
+      display: inline-block;
+      width: 32px;
+      height: 1px;
+      background: var(--burn);
+    }
+    .section-h2 {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 600;
+      font-size: clamp(36px, 5vw, 60px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--fg);
+      margin-bottom: 20px;
+      max-width: 800px;
+    }
+    .section-lead {
+      font-size: 17px;
+      color: var(--fg-soft);
+      max-width: 620px;
+      line-height: 1.75;
+    }
+
+    /* ============================================================
+       01 · SELECTED WORK
+    ============================================================ */
+    .works {
+      padding: 100px 0 140px;
+    }
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 72px;
+    }
+    .work {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 36px 28px 32px;
+      text-decoration: none;
+      color: var(--fg);
+      transition: all .3s;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+    .work:hover {
+      border-color: var(--burn);
+      transform: translateY(-4px);
+    }
+    .work .num {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--fg-soft);
+      letter-spacing: 0.22em;
+      margin-bottom: 24px;
+    }
+    .work .tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--burn);
+      margin-bottom: 12px;
+    }
+    .work h3 {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--fg);
+      margin-bottom: 16px;
+    }
+    .work p {
+      font-size: 15px;
+      color: var(--fg-soft);
+      line-height: 1.7;
+      margin-bottom: 28px;
+      flex: 1;
+    }
+    .work .link {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--fg);
+      letter-spacing: 0.04em;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color .2s, gap .2s;
+    }
+    .work:hover .link {
+      color: var(--burn);
+      gap: 12px;
+    }
+    .work.featured {
+      background: var(--ink);
+      color: var(--oat);
+      border-color: var(--ink);
+    }
+    [data-theme="dark"] .work.featured {
+      background: var(--burn);
+      color: #fff;
+      border-color: var(--burn);
+    }
+    .work.featured h3, .work.featured .link { color: var(--oat); }
+    [data-theme="dark"] .work.featured h3, [data-theme="dark"] .work.featured .link { color: #fff; }
+    .work.featured p { color: rgba(237, 229, 211, 0.75); }
+    .work.featured .num, .work.featured .tag {
+      color: var(--caramel);
+    }
+    [data-theme="dark"] .work.featured .num, [data-theme="dark"] .work.featured .tag {
+      color: rgba(255,255,255,0.7);
+    }
+
+    @media (max-width: 880px) {
+      .works-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
+       02 · CONTENT HUB
+    ============================================================ */
+    .hub {
+      background: var(--ink);
+      color: var(--oat);
+      padding: 120px 0;
+      position: relative;
+    }
+    .hub::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(245, 241, 232, 0.025) 1px, transparent 1px);
+      background-size: 5px 5px;
+      pointer-events: none;
+    }
+    [data-theme="dark"] .hub { background: var(--bg-2); }
+
+    .hub .section-label { color: var(--caramel); }
+    .hub .section-label::before { background: var(--caramel); }
+    .hub .section-h2 { color: var(--oat); }
+    .hub .section-lead { color: rgba(237, 229, 211, 0.7); }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 72px;
+    }
+    .pillar {
+      background: rgba(237, 229, 211, 0.04);
+      border: 1px solid rgba(237, 229, 211, 0.1);
+      border-radius: 12px;
+      padding: 40px 32px;
+      transition: all .3s;
+    }
+    .pillar:hover {
+      background: rgba(237, 229, 211, 0.07);
+      border-color: var(--burn);
+    }
+    .pillar .num {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--caramel);
+      letter-spacing: 0.22em;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .pillar h3 {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 700;
+      font-size: 32px;
+      color: var(--oat);
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+    .pillar p {
+      font-size: 15px;
+      color: rgba(237, 229, 211, 0.7);
+      line-height: 1.75;
+    }
+    @media (max-width: 880px) {
+      .pillars { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
+       03 · FIND ME
+    ============================================================ */
+    .find {
+      padding: 120px 0;
+    }
+    .socials {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+      margin-top: 72px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .social {
+      background: var(--bg);
+      padding: 40px 28px 36px;
+      text-decoration: none;
+      color: var(--fg);
+      transition: background .3s;
+    }
+    .social:hover { background: var(--bg-2); }
+    .social .platform {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--burn);
+      margin-bottom: 16px;
+    }
+    .social .handle {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: -0.02em;
+      color: var(--fg);
+      margin-bottom: 10px;
+      line-height: 1.1;
+    }
+    .social p {
+      font-size: 13px;
+      color: var(--fg-soft);
+      line-height: 1.6;
+    }
+    @media (max-width: 880px) {
+      .socials { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 540px) {
+      .socials { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      padding: 80px 0 40px;
+      border-top: 1px solid var(--border);
+      position: relative;
+      z-index: 2;
+    }
+    footer .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+    footer .brand-block {
+      max-width: 460px;
+    }
+    footer .brand {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 700;
+      font-size: 28px;
+      color: var(--fg);
+      margin-bottom: 12px;
+    }
+    footer .brand .dot { color: var(--burn); }
+    footer .tagline {
+      font-size: 15px;
+      color: var(--fg-soft);
+      line-height: 1.65;
+    }
+    footer .links {
+      display: flex;
+      gap: 32px;
+    }
+    footer .links a {
+      font-family: var(--sans);
+      font-size: 14px;
+      color: var(--fg);
+      opacity: 0.75;
+      text-decoration: none;
+      transition: opacity .2s, color .2s;
+    }
+    footer .links a:hover { opacity: 1; color: var(--burn); }
+    footer .bottom {
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--fg-soft);
+      letter-spacing: 0.04em;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    footer .bottom .anchor { color: var(--burn); font-weight: 700; }
+
+    /* ============================================================
+       浮動聊天按鈕
+    ============================================================ */
+    .chat-fab {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--burn);
+      color: #fff;
+      padding: 14px 22px;
+      border: none;
+      border-radius: 999px;
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(217, 82, 42, 0.35);
+      z-index: 50;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .chat-fab:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(217, 82, 42, 0.45);
+    }
+    .chat-fab .pulse-mini {
+      width: 8px;
+      height: 8px;
+      background: #fff;
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    /* ============================================================
+       💬 聊天 menu（點 chat-fab 從上方彈出）
+    ============================================================ */
+    .chat-menu {
+      position: fixed;
+      bottom: 80px;
+      right: 24px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px;
+      width: 300px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
+      opacity: 0;
+      transform: translateY(14px) scale(0.96);
+      pointer-events: none;
+      transition: opacity 0.28s ease, transform 0.28s ease;
+      z-index: 51;
+    }
+    [data-theme="dark"] .chat-menu { background: var(--card); }
+    .chat-menu.open {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+    .chat-menu-title {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--fg);
+      padding: 6px 8px 12px;
+      margin-bottom: 6px;
+      border-bottom: 1px dashed var(--border);
+    }
+    .chat-menu-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 8px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--fg);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .chat-menu-item:hover {
+      background: var(--bg-2);
+      transform: translateX(2px);
+    }
+    .chat-menu-item .ico {
+      font-size: 18px;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--card);
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+    .chat-menu-item .label {
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--fg);
+      margin-bottom: 2px;
+      letter-spacing: 0.02em;
+    }
+    .chat-menu-item .sub {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--fg-soft);
+      letter-spacing: 0.02em;
+    }
+
+    @media (max-width: 540px) {
+      .chat-menu {
+        width: calc(100vw - 48px);
+        right: 24px;
+      }
+    }
+
+    /* ============================================================
+       00 · ABOUT ME
+    ============================================================ */
+    .about {
+      padding: 120px 0 100px;
+      position: relative;
+      z-index: 2;
+    }
+    .about-lead {
+      font-family: var(--sans);
+      font-size: clamp(22px, 2.8vw, 32px);
+      font-weight: 500;
+      color: var(--fg);
+      max-width: 920px;
+      margin-top: 40px;
+      margin-bottom: 32px;
+      line-height: 1.5;
+      letter-spacing: -0.012em;
+    }
+    .about-lead strong { color: var(--burn); font-weight: 700; }
+    .about-sub {
+      font-size: 17px;
+      color: var(--fg-soft);
+      max-width: 720px;
+      margin-bottom: 64px;
+      line-height: 1.85;
+    }
+    .about-sub strong { color: var(--fg); font-weight: 700; }
+
+    .motto {
+      background: var(--ink);
+      color: var(--oat);
+      border-radius: 16px;
+      padding: 56px 48px;
+      margin-bottom: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .motto::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(245, 241, 232, 0.04) 1px, transparent 1px);
+      background-size: 5px 5px;
+      pointer-events: none;
+    }
+    [data-theme="dark"] .motto { background: var(--burn); }
+    .motto-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--caramel);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+    }
+    .motto-label::before {
+      content: "";
+      display: inline-block;
+      width: 32px;
+      height: 1px;
+      background: var(--caramel);
+    }
+    [data-theme="dark"] .motto-label { color: rgba(255,255,255,0.85); }
+    [data-theme="dark"] .motto-label::before { background: rgba(255,255,255,0.85); }
+    .motto-text {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 600;
+      font-size: clamp(32px, 4.6vw, 60px);
+      line-height: 1.22;
+      letter-spacing: -0.02em;
+      color: var(--oat);
+      position: relative;
+    }
+    .motto-em {
+      background: var(--burn);
+      color: #fff;
+      padding: 2px 16px;
+      border-radius: 10px;
+      display: inline-block;
+      transform: rotate(-1.5deg);
+      box-shadow: 0 6px 16px rgba(217, 82, 42, 0.4);
+    }
+    [data-theme="dark"] .motto-em {
+      background: var(--peach);
+      color: var(--ink);
+      box-shadow: 0 6px 16px rgba(242, 217, 192, 0.4);
+    }
+
+    .stages {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .stage {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px 24px 28px;
+      transition: all .3s;
+      position: relative;
+    }
+    .stage:hover {
+      border-color: var(--burn);
+      transform: translateY(-4px);
+    }
+    .stage-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--burn);
+      letter-spacing: 0.22em;
+      margin-bottom: 18px;
+      display: block;
+    }
+    .stage-title {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 700;
+      font-size: 23px;
+      color: var(--fg);
+      margin-bottom: 14px;
+      letter-spacing: -0.015em;
+      line-height: 1.15;
+    }
+    .stage p {
+      font-size: 13.5px;
+      color: var(--fg-soft);
+      line-height: 1.7;
+    }
+    @media (max-width: 980px) {
+      .stages { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 540px) {
+      .stages { grid-template-columns: 1fr; }
+      .motto { padding: 40px 28px; }
+    }
+
+    /* 反向定位（不割韭菜）橫條 */
+    .anti-pyramid {
+      margin-top: 64px;
+      padding: 28px 32px;
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .anti-pyramid .badge {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--burn);
+      background: rgba(217, 82, 42, 0.1);
+      padding: 6px 12px;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+    .anti-pyramid p {
+      font-size: 15px;
+      color: var(--fg-soft);
+      line-height: 1.7;
+      margin: 0;
+      flex: 1;
+      min-width: 280px;
+    }
+    .anti-pyramid p strong { color: var(--fg); font-weight: 700; }
+
+    /* ============================================================
+       🚀 太空人吉祥物（自主行走 mascot）
+    ============================================================ */
+    .mascot {
+      position: fixed;
+      bottom: 16px;
+      left: 0;
+      width: 60px;
+      height: 100px;
+      pointer-events: auto;
+      cursor: pointer;
+      z-index: 9998;
+      transform: translateX(-200px);
+      transition: opacity 0.5s ease;
+      will-change: transform;
+      filter: drop-shadow(0 8px 14px rgba(0,0,0,0.22));
+    }
+    .mascot.hidden { opacity: 0; }
+    .mascot svg, .mascot img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      transition: transform 0.25s ease;
+      transform-origin: center bottom;
+    }
+
+    /* 朝向左 */
+    .mascot.flip .mascot-body { transform: scaleX(-1); }
+
+    /* 走路動畫（左右搖晃 + 上下 bobbing） */
+    .mascot.walking .mascot-body { animation: mascotWalk 0.5s ease-in-out infinite; }
+    .mascot.walking.flip .mascot-body { animation: mascotWalkFlip 0.5s ease-in-out infinite; }
+    @keyframes mascotWalk {
+      0%, 100% { transform: scaleX(1)  translateY(0)  rotate(0deg); }
+      25%      { transform: scaleX(1)  translateY(-3px) rotate(2.5deg); }
+      75%      { transform: scaleX(1)  translateY(-3px) rotate(-2.5deg); }
+    }
+    @keyframes mascotWalkFlip {
+      0%, 100% { transform: scaleX(-1) translateY(0)  rotate(0deg); }
+      25%      { transform: scaleX(-1) translateY(-3px) rotate(-2.5deg); }
+      75%      { transform: scaleX(-1) translateY(-3px) rotate(2.5deg); }
+    }
+
+    /* 點擊跳 */
+    .mascot.jump .mascot-body { animation: mascotJump 0.7s ease-out; }
+    .mascot.jump.flip .mascot-body { animation: mascotJumpFlip 0.7s ease-out; }
+    @keyframes mascotJump {
+      0%   { transform: scaleX(1) translateY(0); }
+      35%  { transform: scaleX(1) translateY(-45px) rotate(-8deg); }
+      55%  { transform: scaleX(1) translateY(-40px) rotate(6deg); }
+      100% { transform: scaleX(1) translateY(0)   rotate(0deg); }
+    }
+    @keyframes mascotJumpFlip {
+      0%   { transform: scaleX(-1) translateY(0); }
+      35%  { transform: scaleX(-1) translateY(-45px) rotate(8deg); }
+      55%  { transform: scaleX(-1) translateY(-40px) rotate(-6deg); }
+      100% { transform: scaleX(-1) translateY(0)   rotate(0deg); }
+    }
+
+    /* hover 對話泡 */
+    .mascot-bubble {
+      position: absolute;
+      bottom: 105px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--ink);
+      color: var(--oat);
+      padding: 8px 14px;
+      border-radius: 12px;
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .mascot:hover .mascot-bubble {
+      opacity: 1;
+      transform: translateX(-50%) translateY(-4px);
+    }
+    .mascot-bubble::after {
+      content: "";
+      position: absolute;
+      bottom: -7px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-top: 7px solid var(--ink);
+    }
+
+    /* 手機 / 觸控裝置禁用 */
+    @media (hover: none) {
+      .mascot { display: none !important; }
+    }
+
+    /* ============================================================
+       滾動進入動畫
+    ============================================================ */
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity .8s ease, transform .8s ease;
+      }
+      .reveal.in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== NAV ===================== -->
+  <nav>
+    <div class="inner">
+      <a href="#" class="logo">aimo<span class="dot">.</span></a>
+      <ul>
+        <li><a href="#hero">首頁</a></li>
+        <li><a href="#about">關於</a></li>
+        <li><a href="#works">作品</a></li>
+        <li><a href="#hub">內容</a></li>
+        <li><a href="#find">聯絡</a></li>
+        <li><a href="https://vocus.cc/user/@aimo">Vocus</a></li>
+        <li><a href="#course">課程</a></li>
+        <li><a href="aimo-ai-knowledge-base.html" class="ext-link" title="第二站：給做知識付費的你">知識庫 ↗</a></li>
+      </ul>
+      <div class="tools">
+        <div class="lang">
+          <a href="/" class="active">中</a>
+          <a href="/en">EN</a>
+        </div>
+        <button class="theme-toggle" onclick="toggleTheme()" title="切換深色／淺色">◐</button>
+        <a href="#course" class="cta">看下一期課程</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <header class="hero" id="hero">
+    <div class="container">
+      <div class="kicker">
+        <span class="pulse"></span>
+        AIMO.STUDIO · 2026 · AI × SYSTEMS × CRAFT
+      </div>
+      <h1>
+        Turn yourself<br>
+        into the <span class="em">engine<span class="burn">.</span></span>
+      </h1>
+      <h2 class="it">以你自己為根本，讓 AI 給你打工。</h2>
+      <p class="lead">
+        我是 <strong>aimo 艾摸｜AI 短劇 × 搭系統</strong>。<br>
+        我分享<strong>普通人</strong>如何用 AI 短劇和工作流，<br>
+        搭出<strong>自己的 AI 系統</strong>。
+      </p>
+      <div class="ctas">
+        <a href="#course" class="btn btn-primary">看下一期課程</a>
+        <a href="#works" class="btn btn-ghost">看作品實證</a>
+        <a href="#about" class="btn btn-arrow">關於我 →</a>
+        <a href="aimo-ai-knowledge-base.html" class="btn btn-arrow btn-cross-site">給做知識付費的你 ↗</a>
+      </div>
+      <div class="hero-meta">
+        <div>
+          <div class="visit"><span id="visitCount">8,427</span></div>
+          <div class="visit-label">total visits · 2026</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-family:var(--mono);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;opacity:0.6">CURRENT FOCUS</div>
+          <div class="it" style="font-size:22px;color:var(--fg);margin-top:6px">build less, build clearer.</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== MARQUEE ===================== -->
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>AI SHORT FILM</span><span class="dot">·</span>
+      <span>WORKFLOW SYSTEMS</span><span class="dot">·</span>
+      <span>BUILD WITH PROOF</span><span class="dot">·</span>
+      <span>NO PYRAMID SCHEME</span><span class="dot">·</span>
+      <span>STUDENT WORK FIRST</span><span class="dot">·</span>
+      <span>AIMO.STUDIO</span><span class="dot">·</span>
+      <span>TURN YOURSELF INTO THE ENGINE</span><span class="dot">·</span>
+      <!-- 重複一次讓 marquee 無縫接續 -->
+      <span>AI SHORT FILM</span><span class="dot">·</span>
+      <span>WORKFLOW SYSTEMS</span><span class="dot">·</span>
+      <span>BUILD WITH PROOF</span><span class="dot">·</span>
+      <span>NO PYRAMID SCHEME</span><span class="dot">·</span>
+      <span>STUDENT WORK FIRST</span><span class="dot">·</span>
+      <span>AIMO.STUDIO</span><span class="dot">·</span>
+      <span>TURN YOURSELF INTO THE ENGINE</span><span class="dot">·</span>
+    </div>
+  </div>
+
+  <!-- ===================== 00 ABOUT ME ===================== -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="section-label">00 · ABOUT</div>
+      <h2 class="section-h2 reveal">
+        關於 <span class="it">aimo 艾摸</span>。<br>
+        <span class="it">教普通人搭自己的 AI 系統。</span>
+      </h2>
+
+      <p class="about-lead reveal">
+        <strong>aimo 艾摸｜AI 短劇 × 搭系統。</strong><br>
+        我分享<strong>普通人</strong>如何用 AI 短劇和工作流，搭出<strong>自己的 AI 系統</strong>。
+      </p>
+
+      <p class="about-sub reveal">
+        不是大廠專家視角、不是 AI 工具評測、不是販賣焦慮。
+        我<strong>自己跑通過才教</strong>，每一個方法都有成品為證，
+        SOP、提示詞、工具棧全部開源，<strong>沒有藏私的最後 5%</strong>。
+      </p>
+
+      <!-- 方法論金句橫幅 -->
+      <div class="motto reveal">
+        <div class="motto-label">METHOD · 價值鏈四階段 · aimo 親口定</div>
+        <div class="motto-text">
+          把混亂變清楚，<br>
+          把重複變自動，<br>
+          把經驗變內容，<br>
+          把<span class="motto-em">內容變資產</span>。
+        </div>
+      </div>
+
+      <!-- 4 階段卡片 -->
+      <div class="stages reveal">
+        <div class="stage">
+          <span class="stage-num">STAGE 01</span>
+          <div class="stage-title">把混亂<br>變清楚</div>
+          <p>用 AI 整理、分類、結構化，把腦中、桌面、筆記的混亂全部沉澱出來。</p>
+        </div>
+        <div class="stage">
+          <span class="stage-num">STAGE 02</span>
+          <div class="stage-title">把重複<br>變自動</div>
+          <p>把重複的動作做成 SOP、智能體、Skill、Hook，跑一次以上的就值得自動化。</p>
+        </div>
+        <div class="stage">
+          <span class="stage-num">STAGE 03</span>
+          <div class="stage-title">把經驗<br>變內容</div>
+          <p>把跑通過的東西寫成文章、短劇、教程，公開全鏈路、不留藏私的 5%。</p>
+        </div>
+        <div class="stage">
+          <span class="stage-num">STAGE 04</span>
+          <div class="stage-title">把內容<br>變資產</div>
+          <p>內容沉澱成可複用、可被搜尋、可被 LLM 引用的長期資產。</p>
+        </div>
+      </div>
+
+      <!-- 反向定位橫條 -->
+      <div class="anti-pyramid reveal">
+        <span class="badge">NO PYRAMID</span>
+        <p>
+          一般 AI 教學只停在 ①② 教你<strong>用工具</strong>。
+          aimo 帶你走完 ③④ 用工具搭出<strong>自己的資產 / 系統</strong>。
+          這就是「不只教工具、教搭系統」的差異。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 01 SELECTED WORK ===================== -->
+  <section class="works" id="works">
+    <div class="container">
+      <div class="section-label">01 · SELECTED WORK</div>
+      <h2 class="section-h2 reveal">
+        精選作品。<br>
+        <span class="it">先做出來，再講。</span>
+      </h2>
+      <p class="section-lead reveal">
+        產品是驗證想法的最終方式。這些是我自己跑通過的成品，
+        SOP、提示詞、工具棧全部開源，<strong>沒做過的事不會出現在這裡。</strong>
+      </p>
+
+      <div class="works-grid">
+        <a href="#course" class="work featured reveal">
+          <div class="num">01</div>
+          <div class="tag">AI 短劇實戰課</div>
+          <h3>6 小時，<br>一部 AI 短劇。</h3>
+          <p>從一句話故事到完整成品的線下班。每期 6 人，工具棧 GPT Image 2 + Seedance + Claude Code，課後 1 週 Slack 答疑。</p>
+          <span class="link">看下一期 →</span>
+        </a>
+        <a href="#" class="work reveal">
+          <div class="num">02</div>
+          <div class="tag">SOP 開源</div>
+          <h3>九宮格<br>分鏡 SOP。</h3>
+          <p>從一句話到九宮格分鏡的完整流程。含 GPT Image 2 提示詞模板、Seedance 分鏡 prompt 與導演鏡頭語言對照表。</p>
+          <span class="link">看 SOP →</span>
+        </a>
+        <a href="#" class="work reveal">
+          <div class="num">03</div>
+          <div class="tag">學員作品集</div>
+          <h3>第一支<br>學員短劇。</h3>
+          <p>完全沒接觸過 AI 的學員，6 小時做出第一支屬於自己的短劇。看完我哭了。學員案例集持續累積中。</p>
+          <span class="link">看案例 →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 02 CONTENT HUB ===================== -->
+  <section class="hub" id="hub">
+    <div class="container">
+      <div class="section-label">02 · CONTENT HUB</div>
+      <h2 class="section-h2 reveal">
+        三條主線，<br>
+        <span class="it">建立能複利的系統。</span>
+      </h2>
+      <p class="section-lead reveal">
+        圍繞 AI 短劇、工作流與個人 IP，把每一次產出做成可以長期複用的資產——
+        而不是一次性的內容。
+      </p>
+
+      <div class="pillars">
+        <div class="pillar reveal">
+          <span class="num">01</span>
+          <h3>AI 短劇<br>工作流</h3>
+          <p>把劇本、分鏡、出片、剪接串成可複用的視頻成片鏈路。把 AI 當員工帶，不是把它當魔法棒。</p>
+        </div>
+        <div class="pillar reveal">
+          <span class="num">02</span>
+          <h3>個人 IP<br>內容系統</h3>
+          <p>圍繞 Vocus、IG 與短內容，建立能長期複利的內容框架。提示詞、版型、發布 SOP 全部模板化。</p>
+        </div>
+        <div class="pillar reveal">
+          <span class="num">03</span>
+          <h3>不割韭菜<br>方法論</h3>
+          <p>每一個決策都過「會不會被看成割韭菜」這道關卡。SOP 開源、價格明牌、學員作品先行。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 03 FIND ME ===================== -->
+  <section class="find" id="find">
+    <div class="container">
+      <div class="section-label">03 · FIND ME</div>
+      <h2 class="section-h2 reveal">
+        在這些地方<br>
+        <span class="it">能找到我。</span>
+      </h2>
+      <p class="section-lead reveal">
+        想看長文觀點去 Vocus，想看視覺成品去 Instagram，想直接聊就寫信。
+      </p>
+
+      <div class="socials">
+        <a href="https://vocus.cc/user/@aimo" class="social reveal">
+          <div class="platform">Vocus</div>
+          <div class="handle">@aimo</div>
+          <p>長文觀點、實戰拆解、課程紀錄</p>
+        </a>
+        <a href="https://instagram.com/aurora_michelle14913" class="social reveal">
+          <div class="platform">Instagram</div>
+          <div class="handle">@aimo</div>
+          <p>視覺成品、9 宮格內容、學員作品</p>
+        </a>
+        <a href="mailto:porsche232323@gmail.com" class="social reveal">
+          <div class="platform">Email</div>
+          <div class="handle">寫信給我</div>
+          <p>合作、課程詢問、長對話最合適</p>
+        </a>
+        <a href="mailto:porsche232323@gmail.com?subject=我想訂閱 aimo Newsletter&body=Hi aimo，我想訂閱你的 weekly Newsletter，上線時請優先寄給我。" class="social reveal">
+          <div class="platform">Newsletter</div>
+          <div class="handle">先收名單</div>
+          <p>寫信告訴我「我想訂閱」，上線優先寄你。</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== COURSE CTA（簡版 anchor） ===================== -->
+  <section id="course" style="padding: 80px 0 140px;">
+    <div class="container-narrow">
+      <div class="section-label">NEXT COHORT · 2026/07</div>
+      <h2 class="section-h2 reveal" style="margin-bottom: 32px;">
+        AI 短劇 <span class="it">實戰課</span>。<br>
+        6 小時 → 1 部成品。
+      </h2>
+      <p class="section-lead reveal" style="margin-bottom: 40px;">
+        每期 6 人。SOP 全部開源。課後 1 週 Slack 答疑。<strong>NT$ 12,800，沒有早鳥沒有限時。</strong>
+      </p>
+      <a href="mailto:porsche232323@gmail.com?subject=AI 短劇實戰課報名" class="btn btn-primary" style="font-size:16px;padding:18px 32px;">
+        私訊 aimo 報名 →
+      </a>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="container">
+      <div class="top">
+        <div class="brand-block">
+          <div class="brand">aimo<span class="dot">.</span></div>
+          <div class="tagline">
+            <span class="it" style="font-size:17px;">把混亂變清楚，把重複變自動，</span><br>
+            <span class="it" style="font-size:17px;">把經驗變內容，把內容變資產。</span>
+          </div>
+        </div>
+        <div class="links">
+          <a href="https://vocus.cc/user/@aimo">Vocus</a>
+          <a href="https://instagram.com/aurora_michelle14913">Instagram</a>
+          <a href="mailto:porsche232323@gmail.com">Email</a>
+          <a href="#course">課程</a>
+        </div>
+      </div>
+      <div class="bottom">
+        <div>© 2026 aimo · <span class="anchor">以你自己為根本，讓 AI 給你打工。</span></div>
+        <div>AIMO.STUDIO · TAIPEI</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================== 🚀 太空人吉祥物（自主行走） ===================== -->
+  <!--
+    暫代品：SVG 簡化版太空人。
+    未來替換真實 PNG：把 aimo 提供的太空人 PNG 存到 04.素材库/aimo-mascot-spaceman.png，
+    然後把下方 <svg class="mascot-body">...</svg> 換成 <img class="mascot-body" src="../aimo-mascot-spaceman.png" alt="aimo 吉祥物">
+  -->
+  <div class="mascot" id="mascot" aria-label="aimo 吉祥物">
+    <div class="mascot-bubble">Hi！我是 aimo 的吉祥物 👾</div>
+    <svg class="mascot-body" viewBox="0 0 60 100" xmlns="http://www.w3.org/2000/svg">
+      <!-- 地面陰影 -->
+      <ellipse cx="30" cy="97" rx="18" ry="2.5" fill="rgba(0,0,0,0.18)"/>
+      <!-- 頭髮（黑色蓬鬆瀏海） -->
+      <path d="M12 22 Q10 7 30 5 Q50 7 48 22 L48 27 Q44 22 38 22 L22 22 Q16 22 12 27 Z" fill="#1A1A1A"/>
+      <!-- 臉 -->
+      <ellipse cx="30" cy="28" rx="13" ry="11" fill="#FFD9B8"/>
+      <!-- 眼睛 -->
+      <ellipse cx="24" cy="28" rx="2" ry="2.6" fill="#1A1A1A"/>
+      <ellipse cx="36" cy="28" rx="2" ry="2.6" fill="#1A1A1A"/>
+      <circle cx="23.5" cy="27" r="0.6" fill="#fff"/>
+      <circle cx="35.5" cy="27" r="0.6" fill="#fff"/>
+      <!-- 嘴 -->
+      <path d="M26 36 Q30 38.5 34 36" stroke="#1A1A1A" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      <!-- 脖子 -->
+      <rect x="26" y="38" width="8" height="4" fill="#FFD9B8"/>
+      <!-- 太空裝身體 -->
+      <rect x="13" y="42" width="34" height="36" rx="8" fill="#E8EAF0"/>
+      <!-- 太空裝左側陰影 -->
+      <path d="M13 50 Q13 42 17 42 L18 78 L13 78 Z" fill="#D0D4DC"/>
+      <!-- BB 胸標 -->
+      <rect x="22" y="52" width="16" height="11" rx="2" fill="#5A6068"/>
+      <text x="30" y="61" text-anchor="middle" fill="#fff" font-size="8" font-weight="900" font-family="sans-serif">BB</text>
+      <!-- 拉鏈線 -->
+      <line x1="30" y1="42" x2="30" y2="52" stroke="#B0B5BD" stroke-width="0.8"/>
+      <!-- 手臂左（叉腰） -->
+      <path d="M13 50 Q5 60 12 70 Q14 65 18 60 L18 52 Z" fill="#E8EAF0"/>
+      <circle cx="11" cy="68" r="3" fill="#FFD9B8"/>
+      <!-- 手臂右（叉腰） -->
+      <path d="M47 50 Q55 60 48 70 Q46 65 42 60 L42 52 Z" fill="#E8EAF0"/>
+      <circle cx="49" cy="68" r="3" fill="#FFD9B8"/>
+      <!-- 腿 -->
+      <rect x="17" y="78" width="11" height="16" rx="3" fill="#E8EAF0"/>
+      <rect x="32" y="78" width="11" height="16" rx="3" fill="#E8EAF0"/>
+      <!-- 鞋 -->
+      <ellipse cx="22.5" cy="94" rx="8" ry="3.5" fill="#5A6068"/>
+      <ellipse cx="37.5" cy="94" rx="8" ry="3.5" fill="#5A6068"/>
+    </svg>
+  </div>
+
+  <!-- ===================== 浮動聊天按鈕 ===================== -->
+  <!-- 聊天 menu -->
+  <div class="chat-menu" id="chatMenu" role="dialog" aria-label="聯絡方式">
+    <div class="chat-menu-title">想怎麼跟我聊？</div>
+    <a href="mailto:porsche232323@gmail.com?subject=Hi aimo · 我想聊聊" class="chat-menu-item">
+      <span class="ico">✉️</span>
+      <div>
+        <div class="label">寫 Email</div>
+        <div class="sub">porsche232323@gmail.com</div>
+      </div>
+    </a>
+    <a href="https://instagram.com/aurora_michelle14913" target="_blank" rel="noopener" class="chat-menu-item">
+      <span class="ico">📷</span>
+      <div>
+        <div class="label">IG 私訊</div>
+        <div class="sub">@aurora_michelle14913</div>
+      </div>
+    </a>
+    <a href="https://vocus.cc/user/@aimo" target="_blank" rel="noopener" class="chat-menu-item">
+      <span class="ico">✍️</span>
+      <div>
+        <div class="label">Vocus 留言</div>
+        <div class="sub">在文章下留言互動</div>
+      </div>
+    </a>
+    <a href="#find" class="chat-menu-item" onclick="document.getElementById('chatMenu').classList.remove('open');">
+      <span class="ico">📍</span>
+      <div>
+        <div class="label">看所有聯絡方式</div>
+        <div class="sub">滑到聯絡區</div>
+      </div>
+    </a>
+  </div>
+
+  <button class="chat-fab" id="chatFab" onclick="toggleChatMenu(event)">
+    <span class="pulse-mini"></span>
+    跟 aimo 聊聊
+  </button>
+
+  <!-- ===================== Scripts ===================== -->
+  <script>
+    // 深色／淺色切換
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('aimo-theme', next);
+    }
+    // 載入時讀取偏好
+    (function() {
+      const saved = localStorage.getItem('aimo-theme');
+      if (saved) document.documentElement.setAttribute('data-theme', saved);
+    })();
+
+    // 訪客計數慢慢爬升
+    (function() {
+      const el = document.getElementById('visitCount');
+      let current = 8427;
+      setInterval(() => {
+        if (Math.random() > 0.85) {
+          current++;
+          el.textContent = current.toLocaleString();
+        }
+      }, 4000);
+    })();
+
+    // 滾動進入動畫
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('in');
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // 🚀 太空人吉祥物：自主行走 + 滑鼠靠近 hover 跟 + 點擊跳
+    (function() {
+      const mascot = document.getElementById('mascot');
+      if (!mascot) return;
+      if (!window.matchMedia('(hover: hover)').matches) return;
+
+      let currentX = 100;
+      let targetX  = 200;
+      let isWaiting = false;
+      let isFollowingMouse = false;
+      let mouseX = null;
+      let isJumping = false;
+      const SPEED = 1.2;            // px per frame (~60fps)
+      const FOLLOW_RANGE = 280;     // 滑鼠在底部 + 距離角色 N px 內才跟
+      const BOTTOM_ZONE_HEIGHT = 220;
+      const MARGIN_X = 30;
+      const HOVER_OFFSET = 40;      // 跟滑鼠時保持一點距離
+
+      function chooseNextTarget() {
+        const minX = MARGIN_X;
+        const maxX = window.innerWidth - 80 - MARGIN_X;
+        // 不要原地踏步：新目標跟當前位置至少 200px
+        let next;
+        let tries = 0;
+        do {
+          next = Math.random() * (maxX - minX) + minX;
+          tries++;
+        } while (Math.abs(next - currentX) < 200 && tries < 5);
+        targetX = next;
+      }
+
+      function pause(duration) {
+        isWaiting = true;
+        mascot.classList.remove('walking');
+        setTimeout(() => {
+          isWaiting = false;
+          chooseNextTarget();
+        }, duration);
+      }
+
+      function animate() {
+        if (isJumping) {
+          requestAnimationFrame(animate);
+          return;
+        }
+
+        // 滑鼠靠近時改跟滑鼠
+        if (isFollowingMouse && mouseX !== null) {
+          targetX = mouseX - HOVER_OFFSET;
+        }
+
+        if (!isWaiting) {
+          const dx = targetX - currentX;
+          if (Math.abs(dx) > 3) {
+            currentX += Math.sign(dx) * SPEED;
+            mascot.classList.add('walking');
+            if (dx < 0) mascot.classList.add('flip');
+            else        mascot.classList.remove('flip');
+          } else {
+            currentX = targetX;
+            mascot.classList.remove('walking');
+            if (!isFollowingMouse) {
+              // 隨機暫停 2-5 秒
+              const dur = 2000 + Math.random() * 3000;
+              pause(dur);
+            }
+          }
+        }
+
+        mascot.style.transform = `translateX(${currentX}px)`;
+        requestAnimationFrame(animate);
+      }
+
+      // 起跑：選個初始目標再開始走
+      chooseNextTarget();
+      animate();
+
+      // 滑鼠靠近偵測（底部 220px 範圍 + 水平 280px 內）
+      document.addEventListener('mousemove', (e) => {
+        const bottomThreshold = window.innerHeight - BOTTOM_ZONE_HEIGHT;
+        if (e.clientY > bottomThreshold) {
+          const dist = Math.abs(e.clientX - currentX);
+          if (dist < FOLLOW_RANGE) {
+            isFollowingMouse = true;
+            mouseX = e.clientX;
+            isWaiting = false;  // 滑鼠靠近時打斷暫停
+            return;
+          }
+        }
+        isFollowingMouse = false;
+        mouseX = null;
+      });
+
+      // 點擊跳
+      mascot.addEventListener('click', () => {
+        if (isJumping) return;
+        isJumping = true;
+        mascot.classList.add('jump');
+        mascot.classList.remove('walking');
+        setTimeout(() => {
+          mascot.classList.remove('jump');
+          isJumping = false;
+        }, 700);
+      });
+
+      // 視窗縮放時重選目標（避免目標跑到畫面外）
+      window.addEventListener('resize', () => {
+        if (targetX > window.innerWidth - 80) {
+          chooseNextTarget();
+        }
+      });
+    })();
+
+    // 💬 聊天 menu 控制
+    function toggleChatMenu(event) {
+      if (event) event.stopPropagation();
+      const menu = document.getElementById('chatMenu');
+      if (menu) menu.classList.toggle('open');
+    }
+    // 點外面關閉
+    document.addEventListener('click', (e) => {
+      const menu = document.getElementById('chatMenu');
+      const fab  = document.getElementById('chatFab');
+      if (!menu || !fab) return;
+      if (!menu.contains(e.target) && !fab.contains(e.target)) {
+        menu.classList.remove('open');
+      }
+    });
+    // ESC 關閉
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const menu = document.getElementById('chatMenu');
+        if (menu) menu.classList.remove('open');
+      }
+    });
+  </script>
+
+</body>
+</html>
