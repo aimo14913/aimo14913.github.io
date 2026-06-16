@@ -1,0 +1,53 @@
+# robots.txt · https://aimo14913.github.io/
+# 一般搜尋引擎：全站開放
+User-agent: *
+Allow: /
+
+# ── AI 爬蟲：明確歡迎（AIO / GEO，讓 LLM 願意收錄 + 引用 aimo）──
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# 網站地圖 + LLM 入口
+Sitemap: https://aimo14913.github.io/sitemap.xml

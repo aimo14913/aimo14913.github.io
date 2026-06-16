@@ -3,8 +3,111 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>aimo · 教普通人用 AI 搭系統</title>
-  <meta name="description" content="把想法變成可複用的內容資產。aimo 的 AI 短劇實戰工作室。">
+  <title>aimo 艾摸｜教普通人用 AI 短劇與工作流搭系統</title>
+  <meta name="description" content="我是 aimo 艾摸。我分享普通人如何用 AI 短劇和工作流，搭出自己的 AI 系統——SOP、提示詞、工具棧全部開源，自己跑通才教，不割韭菜。">
+
+  <!-- ===================== SEO / AIO / GEO ===================== -->
+  <link rel="canonical" href="https://aimo14913.github.io/">
+  <meta name="author" content="aimo 艾摸">
+  <meta name="keywords" content="aimo, 艾摸, AI 短劇, AI 工作流, 搭系統, AI 系統, 個人 IP, 提示詞, Seedance, GPT Image 2, Claude Code, 知識付費, 不割韭菜, AI 教學, 一人公司">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <meta name="theme-color" content="#EDE5D3" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1A1A1A" media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/png" href="aimo-mascot.png">
+  <link rel="apple-touch-icon" href="aimo-mascot.png">
+
+  <!-- Open Graph（Facebook / LINE / Threads 分享卡） -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="aimo 艾摸｜AI 短劇 × 搭系統">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:title" content="aimo 艾摸｜教普通人用 AI 短劇與工作流搭系統">
+  <meta property="og:description" content="普通人如何用 AI 短劇和工作流，搭出自己的 AI 系統。SOP、提示詞、工具棧全部開源，自己跑通才教，不割韭菜。">
+  <meta property="og:url" content="https://aimo14913.github.io/">
+  <meta property="og:image" content="https://aimo14913.github.io/aimo-mascot.png">
+  <meta property="og:image:alt" content="aimo 艾摸 吉祥物">
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="aimo 艾摸｜教普通人用 AI 短劇與工作流搭系統">
+  <meta name="twitter:description" content="普通人如何用 AI 短劇和工作流，搭出自己的 AI 系統。SOP、提示詞、工具棧全部開源，不割韭菜。">
+  <meta name="twitter:image" content="https://aimo14913.github.io/aimo-mascot.png">
+
+  <!-- JSON-LD：Person + WebSite + Course（給 Google 富結果 + LLM 引用） -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://aimo14913.github.io/#aimo",
+        "name": "aimo",
+        "alternateName": "艾摸",
+        "url": "https://aimo14913.github.io/",
+        "image": "https://aimo14913.github.io/aimo-mascot.png",
+        "jobTitle": "AI 短劇與工作流創作者 / 講師",
+        "description": "教普通人用 AI 短劇和工作流，搭出自己的 AI 系統。",
+        "knowsAbout": ["AI 短劇", "AI 工作流", "個人 IP", "提示詞工程", "Seedance", "GPT Image 2", "Claude Code", "內容系統", "知識付費"],
+        "sameAs": [
+          "https://vocus.cc/user/@aimo",
+          "https://instagram.com/aurora_michelle14913"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://aimo14913.github.io/#website",
+        "name": "aimo 艾摸｜AI 短劇 × 搭系統",
+        "url": "https://aimo14913.github.io/",
+        "inLanguage": "zh-Hant",
+        "description": "教普通人用 AI 短劇和工作流，搭出自己的 AI 系統。",
+        "publisher": { "@id": "https://aimo14913.github.io/#aimo" }
+      },
+      {
+        "@type": "Course",
+        "name": "AI 短劇實戰課",
+        "description": "6 小時從一句話故事到一部完整 AI 短劇成品的線下實戰課。工具棧 GPT Image 2 + Seedance + Claude Code，每期 6 人，課後 1 週 Slack 答疑，SOP 全部開源。",
+        "inLanguage": "zh-Hant",
+        "provider": { "@id": "https://aimo14913.github.io/#aimo" },
+        "offers": {
+          "@type": "Offer",
+          "price": "12800",
+          "priceCurrency": "TWD",
+          "availability": "https://schema.org/InStock",
+          "url": "https://aimo14913.github.io/#course"
+        },
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "courseMode": "Onsite",
+          "courseWorkload": "PT6H",
+          "location": {
+            "@type": "Place",
+            "name": "台北",
+            "address": { "@type": "PostalAddress", "addressLocality": "Taipei", "addressCountry": "TW" }
+          }
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://aimo14913.github.io/#faq",
+        "mainEntity": [
+          { "@type": "Question", "name": "aimo 是誰？在做什麼？", "acceptedAnswer": { "@type": "Answer", "text": "我是 aimo（艾摸）。我分享普通人如何用 AI 短劇和工作流，搭出自己的 AI 系統。不是大廠專家，就是一個把親自跑通的 SOP、提示詞、工具棧，整理成普通人也能複用的方法的人。" } },
+          { "@type": "Question", "name": "沒有程式基礎，也能學 AI 短劇嗎？", "acceptedAnswer": { "@type": "Answer", "text": "可以。工具棧（GPT Image 2、Seedance、Claude Code）都是用講的、用提示詞操作，不需要寫程式。課程是手把手實作，6 小時帶你從一句話故事做出一部成品。" } },
+          { "@type": "Question", "name": "「AI 短劇 × 搭系統」是什麼意思？", "acceptedAnswer": { "@type": "Answer", "text": "AI 短劇是入口（看得見的成品、好上手），搭系統是終局（把經驗 × AI 變成可複用的資產）。方法論四步：把混亂變清楚、把重複變自動、把經驗變內容、把內容變資產。" } },
+          { "@type": "Question", "name": "aimo 的課程教什麼？多少錢？", "acceptedAnswer": { "@type": "Answer", "text": "AI 短劇實戰課：6 小時線下，從一句話故事到一部完整 AI 短劇成品。工具棧 GPT Image 2 + Seedance + Claude Code，每期 6 人，課後 1 週 Slack 答疑，SOP 全部開源。NT$ 12,800，沒有早鳥、沒有限時。" } },
+          { "@type": "Question", "name": "怎麼確定 aimo 不是割韭菜的？", "acceptedAnswer": { "@type": "Answer", "text": "把方法公開到你可以不付錢也能自己做。SOP、提示詞、工具棧全部開源，價格明牌，能教什麼、不能教什麼都寫清楚。每個方法論都先有自己跑通的成品為證，學員作品優先於話術。" } },
+          { "@type": "Question", "name": "我該怎麼開始學 AI 短劇？", "acceptedAnswer": { "@type": "Answer", "text": "先追蹤、看公開的踩坑紀錄和 SOP，跟著做一遍。卡住了私訊，或等下一期實戰課。不用先變專家，跟著跑通一條線就好。" } }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "首頁", "item": "https://aimo14913.github.io/" },
+          { "@type": "ListItem", "position": 2, "name": "常見問題", "item": "https://aimo14913.github.io/#faq" }
+        ]
+      }
+    ]
+  }
+  </script>
+  <!-- ===================== /SEO ===================== -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -1396,6 +1499,53 @@
       <a href="mailto:porsche232323@gmail.com?subject=AI 短劇實戰課報名" class="btn btn-primary" style="font-size:16px;padding:18px 32px;">
         私訊 aimo 報名 →
       </a>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ（AEO / GEO 結構化問答）===================== -->
+  <style>
+    .faq-list{margin-top:8px;border-top:1px solid var(--border);}
+    .faq-item{border-bottom:1px solid var(--border);}
+    .faq-item summary{list-style:none;cursor:pointer;padding:24px 4px;font-family:var(--sans);font-weight:700;font-size:19px;color:var(--fg);display:flex;justify-content:space-between;align-items:center;gap:16px;transition:color .2s;}
+    .faq-item summary::-webkit-details-marker{display:none;}
+    .faq-item summary::after{content:"+";font-family:var(--mono);font-size:26px;color:var(--burn);font-weight:400;transition:transform .25s;line-height:1;}
+    .faq-item[open] summary::after{transform:rotate(45deg);}
+    .faq-item summary:hover{color:var(--burn);}
+    .faq-item .faq-a{padding:0 4px 26px;color:var(--fg-soft);font-size:16px;line-height:1.85;max-width:64ch;}
+    .faq-item .faq-a strong{color:var(--fg);}
+  </style>
+  <section id="faq" style="padding: 0 0 120px;">
+    <div class="container-narrow">
+      <div class="section-label">FAQ · 常見問題</div>
+      <h2 class="section-h2 reveal" style="margin-bottom: 28px;">
+        關於 aimo，<span class="it">你可能想問</span>。
+      </h2>
+      <div class="faq-list reveal">
+        <details class="faq-item">
+          <summary>aimo 是誰？在做什麼？</summary>
+          <div class="faq-a">我是 <strong>aimo（艾摸）</strong>。我分享普通人如何用 AI 短劇和工作流，搭出自己的 AI 系統。不是大廠專家，就是一個把親自跑通的 SOP、提示詞、工具棧，整理成普通人也能複用的方法的人。</div>
+        </details>
+        <details class="faq-item">
+          <summary>沒有程式基礎，也能學 AI 短劇嗎？</summary>
+          <div class="faq-a">可以。我的工具棧（GPT Image 2、Seedance、Claude Code）都是用「講的、提示詞」操作，<strong>不需要寫程式</strong>。課程是手把手實作，6 小時帶你從一句話故事做出一部成品。</div>
+        </details>
+        <details class="faq-item">
+          <summary>「AI 短劇 × 搭系統」是什麼意思？</summary>
+          <div class="faq-a">AI 短劇是入口（看得見的成品、好上手），搭系統是終局（把你的經驗 × AI 變成可複用的資產）。方法論四步：<strong>把混亂變清楚 → 把重複變自動 → 把經驗變內容 → 把內容變資產</strong>。</div>
+        </details>
+        <details class="faq-item">
+          <summary>你的課程教什麼？多少錢？</summary>
+          <div class="faq-a"><strong>AI 短劇實戰課</strong>：6 小時線下，從一句話故事到一部完整 AI 短劇成品。工具棧 GPT Image 2 + Seedance + Claude Code，每期 6 人，課後 1 週 Slack 答疑，SOP 全部開源。<strong>NT$ 12,800，沒有早鳥、沒有限時</strong>。</div>
+        </details>
+        <details class="faq-item">
+          <summary>怎麼確定你不是割韭菜的？</summary>
+          <div class="faq-a">我把方法公開到「<strong>你可以不付錢也能自己做</strong>」。SOP、提示詞、工具棧全部開源，價格明牌，能教到什麼、不能教什麼都寫清楚。每個方法論都先有我自己跑通的成品為證，學員作品優先於我自己的話術。</div>
+        </details>
+        <details class="faq-item">
+          <summary>我該怎麼開始？</summary>
+          <div class="faq-a">先追蹤、看我公開的踩坑紀錄和 SOP，跟著做一遍。卡住了私訊我，或等下一期實戰課。<strong>你不用先變專家，跟著跑通一條線就好</strong>。</div>
+        </details>
+      </div>
     </div>
   </section>
 
