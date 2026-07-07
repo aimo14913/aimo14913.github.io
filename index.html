@@ -64,7 +64,7 @@
       {
         "@type": "Course",
         "name": "AI 短劇實戰課",
-        "description": "6 小時從一句話故事到一部完整 AI 短劇成品的線下實戰課。工具棧 GPT Image 2 + Seedance + Claude Code，每期 6 人，課後 1 週 Slack 答疑，SOP 全部開源。",
+        "description": "6 小時線下入門基礎班，從一句話故事到一部完整 AI 短劇成品。工具棧以 GPT Image 2 + Seedance 為主，每期 6 人，課後提供線上答疑課。",
         "inLanguage": "zh-Hant",
         "provider": { "@id": "https://aimo14913.github.io/#aimo" },
         "offers": {
@@ -90,9 +90,9 @@
         "@id": "https://aimo14913.github.io/#faq",
         "mainEntity": [
           { "@type": "Question", "name": "aimo 是誰？在做什麼？", "acceptedAnswer": { "@type": "Answer", "text": "我是 aimo（艾摸）。我分享普通人如何用 AI 短劇和工作流，搭出自己的 AI 系統。不是大廠專家，就是一個把親自跑通的 SOP、提示詞、工具棧，整理成普通人也能複用的方法的人。" } },
-          { "@type": "Question", "name": "沒有程式基礎，也能學 AI 短劇嗎？", "acceptedAnswer": { "@type": "Answer", "text": "可以。工具棧（GPT Image 2、Seedance、Claude Code）都是用講的、用提示詞操作，不需要寫程式。課程是手把手實作，6 小時帶你從一句話故事做出一部成品。" } },
+          { "@type": "Question", "name": "沒有程式基礎，也能學 AI 短劇嗎？", "acceptedAnswer": { "@type": "Answer", "text": "可以。工具棧以 GPT Image 2、Seedance 為主，都是用講的、用提示詞操作，不需要寫程式。課程是手把手實作，6 小時帶你從一句話故事做出一部成品。" } },
           { "@type": "Question", "name": "「AI 短劇 × 搭系統」是什麼意思？", "acceptedAnswer": { "@type": "Answer", "text": "AI 短劇是入口（看得見的成品、好上手），搭系統是終局（把經驗 × AI 變成可複用的資產）。方法論四步：把混亂變清楚、把重複變自動、把經驗變內容、把內容變資產。" } },
-          { "@type": "Question", "name": "aimo 的課程教什麼？多少錢？", "acceptedAnswer": { "@type": "Answer", "text": "AI 短劇實戰課：6 小時線下，從一句話故事到一部完整 AI 短劇成品。工具棧 GPT Image 2 + Seedance + Claude Code，每期 6 人，課後 1 週 Slack 答疑，SOP 全部開源。NT$ 12,800，沒有早鳥、沒有限時。" } },
+          { "@type": "Question", "name": "aimo 的課程教什麼？多少錢？", "acceptedAnswer": { "@type": "Answer", "text": "AI 短劇實戰課：6 小時線下入門基礎班，從一句話故事到一部完整 AI 短劇成品。工具棧以 GPT Image 2 + Seedance 為主，每期 6 人，課後提供線上答疑課。NT$ 12,800，沒有早鳥、沒有限時。" } },
           { "@type": "Question", "name": "怎麼確定 aimo 不是割韭菜的？", "acceptedAnswer": { "@type": "Answer", "text": "把方法公開到你可以不付錢也能自己做。SOP、提示詞、工具棧全部開源，價格明牌，能教什麼、不能教什麼都寫清楚。每個方法論都先有自己跑通的成品為證，學員作品優先於話術。" } },
           { "@type": "Question", "name": "我該怎麼開始學 AI 短劇？", "acceptedAnswer": { "@type": "Answer", "text": "先追蹤、看公開的踩坑紀錄和 SOP，跟著做一遍。卡住了私訊，或等下一期實戰課。不用先變專家，跟著跑通一條線就好。" } }
         ]
@@ -704,7 +704,7 @@
     }
     .socials {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 4px;
       margin-top: 72px;
       background: var(--border);
@@ -812,6 +812,49 @@
       gap: 16px;
     }
     footer .bottom .anchor { color: var(--burn); font-weight: 700; }
+
+
+    /* ============================================================
+       右下角聯絡浮動按鈕
+    ============================================================ */
+    .contact-fab {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 70;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      background: var(--burn);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      box-shadow: 0 10px 28px rgba(217, 82, 42, 0.38);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .contact-fab:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 34px rgba(217, 82, 42, 0.48);
+    }
+    .contact-fab-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.22);
+    }
+    @media (max-width: 540px) {
+      .contact-fab {
+        right: 16px;
+        bottom: 16px;
+        padding: 12px 18px;
+      }
+    }
 
     /* ============================================================
        00 · ABOUT ME
@@ -1277,7 +1320,7 @@
           <div class="num">01</div>
           <div class="tag">AI 短劇實戰課</div>
           <h3>6 小時，<br>一部 AI 短劇。</h3>
-          <p>從一句話故事到完整成品的線下班。每期 6 人，工具棧 GPT Image 2 + Seedance + Claude Code，課後 1 週 Slack 答疑。</p>
+          <p>從一句話故事到完整成品的線下入門基礎班。每期 6 人，工具棧以 GPT Image 2 + Seedance 為主，課後提供線上答疑課。</p>
           <span class="link">看下一期 →</span>
         </a>
         <a href="#" class="work reveal">
@@ -1340,29 +1383,19 @@
         <span class="it">能找到我。</span>
       </h2>
       <p class="section-lead reveal">
-        想看長文觀點去 Vocus，想看視覺成品去 Instagram，想直接聊就寫信。
+        想看視覺成品可以到 Instagram，想直接聊或詢問課程就寫信給我。
       </p>
 
       <div class="socials">
-        <a href="https://vocus.cc/user/@aimo" class="social reveal">
-          <div class="platform">Vocus</div>
-          <div class="handle">@aimo</div>
-          <p>長文觀點、實戰拆解、課程紀錄</p>
-        </a>
-        <a href="https://instagram.com/aurora_michelle14913" class="social reveal">
-          <div class="platform">Instagram</div>
-          <div class="handle">@aimo</div>
-          <p>視覺成品、9 宮格內容、學員作品</p>
-        </a>
         <a href="mailto:porsche232323@gmail.com" class="social reveal">
           <div class="platform">Email</div>
-          <div class="handle">寫信給我</div>
-          <p>合作、課程詢問、長對話最合適</p>
+          <div class="handle">porsche232323@gmail.com</div>
+          <p>課程詢問、合作邀約、需要我回覆的內容，都可以直接寫信。</p>
         </a>
-        <a href="mailto:porsche232323@gmail.com?subject=我想訂閱 aimo Newsletter&body=Hi aimo，我想訂閱你的 weekly Newsletter，上線時請優先寄給我。" class="social reveal">
-          <div class="platform">Newsletter</div>
-          <div class="handle">先收名單</div>
-          <p>寫信告訴我「我想訂閱」，上線優先寄你。</p>
+        <a href="https://instagram.com/aurora_michelle14913" target="_blank" rel="noopener" class="social reveal">
+          <div class="platform">Instagram</div>
+          <div class="handle">@aurora_michelle14913</div>
+          <p>看作品、看日常更新，也可以從 IG 私訊找到我。</p>
         </a>
       </div>
     </div>
@@ -1377,7 +1410,7 @@
         6 小時 → 1 部成品。
       </h2>
       <p class="section-lead reveal" style="margin-bottom: 40px;">
-        每期 6 人。SOP 全部開源。課後 1 週 Slack 答疑。<strong>NT$ 12,800，沒有早鳥沒有限時。</strong>
+        每期 6 人。6 小時線下入門基礎班，課後提供線上答疑課。<strong>NT$ 12,800，沒有早鳥、沒有限時。</strong>
       </p>
       <a href="mailto:porsche232323@gmail.com?subject=AI 短劇實戰課報名" class="btn btn-primary" style="font-size:16px;padding:18px 32px;">
         私訊 aimo 報名 →
@@ -1487,7 +1520,7 @@
         </details>
         <details class="faq-item">
           <summary>沒有程式基礎，也能學 AI 短劇嗎？</summary>
-          <div class="faq-a">可以。我的工具棧（GPT Image 2、Seedance、Claude Code）都是用「講的、提示詞」操作，<strong>不需要寫程式</strong>。課程是手把手實作，6 小時帶你從一句話故事做出一部成品。</div>
+          <div class="faq-a">可以。我的工具棧以 GPT Image 2、Seedance 為主，都是用「講的、提示詞」操作，<strong>不需要寫程式</strong>。課程是手把手實作，6 小時帶你從一句話故事做出一部成品。</div>
         </details>
         <details class="faq-item">
           <summary>「AI 短劇 × 搭系統」是什麼意思？</summary>
@@ -1495,7 +1528,7 @@
         </details>
         <details class="faq-item">
           <summary>你的課程教什麼？多少錢？</summary>
-          <div class="faq-a"><strong>AI 短劇實戰課</strong>：6 小時線下，從一句話故事到一部完整 AI 短劇成品。工具棧 GPT Image 2 + Seedance + Claude Code，每期 6 人，課後 1 週 Slack 答疑，SOP 全部開源。<strong>NT$ 12,800，沒有早鳥、沒有限時</strong>。</div>
+          <div class="faq-a"><strong>AI 短劇實戰課</strong>：6 小時線下入門基礎班，從一句話故事到一部完整 AI 短劇成品。工具棧以 GPT Image 2 + Seedance 為主，每期 6 人，課後提供線上答疑課。<strong>NT$ 12,800，沒有早鳥、沒有限時</strong>。</div>
         </details>
         <details class="faq-item">
           <summary>怎麼確定你不是割韭菜的？</summary>
@@ -1545,6 +1578,10 @@
     <img class="mascot-body" src="aimo-mascot.png" alt="aimo 吉祥物">
   </div>
 
+  <a class="contact-fab" href="#find" aria-label="前往聯絡 aimo 區塊">
+    <span class="contact-fab-dot" aria-hidden="true"></span>
+    跟 aimo 聊聊
+  </a>
   <!-- ===================== Scripts ===================== -->
   <script>
     // 深色／淺色切換
