@@ -814,124 +814,6 @@
     footer .bottom .anchor { color: var(--burn); font-weight: 700; }
 
     /* ============================================================
-       浮動聊天按鈕
-    ============================================================ */
-    .chat-fab {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      background: var(--burn);
-      color: #fff;
-      padding: 14px 22px;
-      border: none;
-      border-radius: 999px;
-      font-family: var(--sans);
-      font-weight: 700;
-      font-size: 14px;
-      letter-spacing: 0.04em;
-      cursor: pointer;
-      box-shadow: 0 8px 24px rgba(217, 82, 42, 0.35);
-      z-index: 50;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: transform .2s, box-shadow .2s;
-    }
-    .chat-fab:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 32px rgba(217, 82, 42, 0.45);
-    }
-    .chat-fab .pulse-mini {
-      width: 8px;
-      height: 8px;
-      background: #fff;
-      border-radius: 50%;
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    /* ============================================================
-       💬 聊天 menu（點 chat-fab 從上方彈出）
-    ============================================================ */
-    .chat-menu {
-      position: fixed;
-      bottom: 80px;
-      right: 24px;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 14px;
-      width: 300px;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
-      opacity: 0;
-      transform: translateY(14px) scale(0.96);
-      pointer-events: none;
-      transition: opacity 0.28s ease, transform 0.28s ease;
-      z-index: 51;
-    }
-    [data-theme="dark"] .chat-menu { background: var(--card); }
-    .chat-menu.open {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-      pointer-events: auto;
-    }
-    .chat-menu-title {
-      font-family: var(--serif);
-      font-style: italic;
-      font-weight: 700;
-      font-size: 18px;
-      color: var(--fg);
-      padding: 6px 8px 12px;
-      margin-bottom: 6px;
-      border-bottom: 1px dashed var(--border);
-    }
-    .chat-menu-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 10px 8px;
-      border-radius: 8px;
-      text-decoration: none;
-      color: var(--fg);
-      transition: background 0.2s, transform 0.2s;
-    }
-    .chat-menu-item:hover {
-      background: var(--bg-2);
-      transform: translateX(2px);
-    }
-    .chat-menu-item .ico {
-      font-size: 18px;
-      width: 38px;
-      height: 38px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--card);
-      border-radius: 8px;
-      flex-shrink: 0;
-    }
-    .chat-menu-item .label {
-      font-family: var(--sans);
-      font-weight: 700;
-      font-size: 14px;
-      color: var(--fg);
-      margin-bottom: 2px;
-      letter-spacing: 0.02em;
-    }
-    .chat-menu-item .sub {
-      font-family: var(--mono);
-      font-size: 10px;
-      color: var(--fg-soft);
-      letter-spacing: 0.02em;
-    }
-
-    @media (max-width: 540px) {
-      .chat-menu {
-        width: calc(100vw - 48px);
-        right: 24px;
-      }
-    }
-
-    /* ============================================================
        00 · ABOUT ME
     ============================================================ */
     .about {
@@ -1663,45 +1545,6 @@
     <img class="mascot-body" src="aimo-mascot.png" alt="aimo 吉祥物">
   </div>
 
-  <!-- ===================== 浮動聊天按鈕 ===================== -->
-  <!-- 聊天 menu -->
-  <div class="chat-menu" id="chatMenu" role="dialog" aria-label="聯絡方式">
-    <div class="chat-menu-title">想怎麼跟我聊？</div>
-    <a href="mailto:porsche232323@gmail.com?subject=Hi aimo · 我想聊聊" class="chat-menu-item">
-      <span class="ico">✉️</span>
-      <div>
-        <div class="label">寫 Email</div>
-        <div class="sub">porsche232323@gmail.com</div>
-      </div>
-    </a>
-    <a href="https://instagram.com/aurora_michelle14913" target="_blank" rel="noopener" class="chat-menu-item">
-      <span class="ico">📷</span>
-      <div>
-        <div class="label">IG 私訊</div>
-        <div class="sub">@aurora_michelle14913</div>
-      </div>
-    </a>
-    <a href="https://vocus.cc/user/@aimo" target="_blank" rel="noopener" class="chat-menu-item">
-      <span class="ico">✍️</span>
-      <div>
-        <div class="label">Vocus 留言</div>
-        <div class="sub">在文章下留言互動</div>
-      </div>
-    </a>
-    <a href="#find" class="chat-menu-item" onclick="document.getElementById('chatMenu').classList.remove('open');">
-      <span class="ico">📍</span>
-      <div>
-        <div class="label">看所有聯絡方式</div>
-        <div class="sub">滑到聯絡區</div>
-      </div>
-    </a>
-  </div>
-
-  <button class="chat-fab" id="chatFab" onclick="toggleChatMenu(event)">
-    <span class="pulse-mini"></span>
-    跟 aimo 聊聊
-  </button>
-
   <!-- ===================== Scripts ===================== -->
   <script>
     // 深色／淺色切換
@@ -1788,28 +1631,6 @@
       });
     })();
 
-    // 💬 聊天 menu 控制
-    function toggleChatMenu(event) {
-      if (event) event.stopPropagation();
-      const menu = document.getElementById('chatMenu');
-      if (menu) menu.classList.toggle('open');
-    }
-    // 點外面關閉
-    document.addEventListener('click', (e) => {
-      const menu = document.getElementById('chatMenu');
-      const fab  = document.getElementById('chatFab');
-      if (!menu || !fab) return;
-      if (!menu.contains(e.target) && !fab.contains(e.target)) {
-        menu.classList.remove('open');
-      }
-    });
-    // ESC 關閉
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        const menu = document.getElementById('chatMenu');
-        if (menu) menu.classList.remove('open');
-      }
-    });
   </script>
 
 </body>
