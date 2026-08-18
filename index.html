@@ -1897,9 +1897,21 @@
         if (rect.top < window.innerHeight && rect.bottom > 0) el.classList.add('in');
       });
     };
-    window.addEventListener('load', revealInViewport);
-    window.addEventListener('hashchange', () => setTimeout(revealInViewport, 50));
-    requestAnimationFrame(revealInViewport);
+    const revealHashTarget = () => {
+      if (!window.location.hash) return;
+      const target = document.querySelector(window.location.hash);
+      if (!target) return;
+      if (target.classList.contains('reveal')) target.classList.add('in');
+      target.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+    };
+    const revealCurrentLocation = () => {
+      revealHashTarget();
+      revealInViewport();
+    };
+    window.addEventListener('load', () => setTimeout(revealCurrentLocation, 100));
+    window.addEventListener('hashchange', () => setTimeout(revealCurrentLocation, 50));
+    requestAnimationFrame(revealCurrentLocation);
+    setTimeout(revealCurrentLocation, 500);
 
     // 🐾 aimo 吉祥物：像小精靈一樣「飄著追游標」(左右上下全跟) + 點頁面會跳
     (function() {
