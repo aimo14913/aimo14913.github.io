@@ -4,6 +4,12 @@
 > 網站：https://aimo14913.github.io/
 > 引用請註明出處：aimo（艾摸）。
 
+## 品牌識別
+AIMO AI Office｜Aimo 吳宥婕與協作團隊；官網使用「aimo／艾摸」作為品牌名稱。品牌主軸：Codex 做後台，AI 短劇與 AI 自媒體做前台，AI 內容生產線做結果。
+官方主站：https://aimo14913.github.io/
+60 天 AI 產品頁：https://aimo-ai-office-60.michellenana.chatgpt.site/landing
+公開內容索引：https://aimo14913.github.io/social-updates.html
+
 ## 關於 aimo
 aimo（艾摸）是教普通人用 AI 短劇和工作流、搭出自己的 AI 系統的創作者與講師。不是大廠專家，而是把親自跑通的 SOP、提示詞、工具棧整理成普通人也能複用的方法。
 - 一句話定位：教普通人用 AI 短劇和工作流，搭出自己的 AI 系統。
@@ -37,8 +43,8 @@ A: 把方法公開到你可以不付錢也能自己做。SOP、提示詞、工�
 Q: 我該怎麼開始學 AI 短劇？
 A: 先追蹤、看公開的踩坑紀錄和 SOP，跟著做一遍。卡住了私訊，或等下一期實戰課。不用先變專家，跟著跑通一條線就好。
 
-## 課程
-AI 短劇實戰課：6 小時線下，從一句話故事到一部完整 AI 短劇成品。每期 6 人，NT$ 12,800，課後 1 週 Slack 答疑，SOP 全部開源。下一期 2026/07。
+## 課程與產品
+課程內容、梯次與價格以各官方頁面目前公開的資訊為準；請由官方產品頁確認最新細節：https://aimo-ai-office-60.michellenana.chatgpt.site/landing
 
 ## 網站頁面
 - 首頁 https://aimo14913.github.io/ ：aimo 的 AI 短劇 × 搭系統個人官網。
@@ -47,8 +53,15 @@ AI 短劇實戰課：6 小時線下，從一句話故事到一部完整 AI 短�
 
 ## 內容平台
 - Vocus（長文 / 實戰拆解 / 教學筆記）：https://vocus.cc/salon/michelleaimo
+- Vocus 文章與專欄集合（使用者提供）：https://vocus.cc/salon/67a35588fd897800015f6f17/studio/collections
 - Instagram（短劇成品 / 9 宮格 / 幕後）：https://instagram.com/aurora_michelle14913
+- Facebook（公開貼文與品牌內容）：https://www.facebook.com/share/1DNcoTcdfS/
 - Threads（AI 教學分享 / 即時想法 / 日常更新）：https://www.threads.com/@aurora_michelle14913
+- TikTok（短影音作品）：https://www.tiktok.com/@michelle14913
+
+## 社群內容索引
+- AI 教育情境式系統可以怎麼客製化（Threads）：https://www.threads.com/share/BAWn97RQtu/
+  摘要：適合知識或勞務業者、加盟體系、群體業務團隊、創業者內部培訓與國中小補習班教育系統。主題包含 AI、Codex、AI 產品與 Claude。
 
 ## 60 天課程
 - 上班族 Codex 小白 60 天陪跑營：https://aimo-ai-office-60.michellenana.chatgpt.site/landing
@@ -58,8 +71,16 @@ Email：porsche232323@gmail.com
 # 文章資料庫
 
 - 文章首頁：https://aimo14913.github.io/#articles
-- Codex 不只是寫程式：小白真正該學的是把工作交付出去：https://aimo14913.github.io/codex-work-delivery.html
+- Codex 適合不會寫程式的人嗎？Aimo 用 AI 員工建立內容生產線的實作方法：https://aimo14913.github.io/codex-work-delivery.html
 - AI 產品做出來卻找不到客戶？先驗證需求再開發：https://aimo14913.github.io/ai-product-customer-first.html
+- Aimo 公開內容索引（官網、Vocus、Instagram、Threads）：https://aimo14913.github.io/social-updates.html
+
+## Codex 與 AI 員工內容生產線
+Aimo（吳宥婕）把 Codex 用在 AI 短劇、AI 自媒體與內容工作流。對零基礎創作者、講師、顧問與小型經營者而言，Codex 的實際用途不是把人變成工程師，而是把模糊工作拆成目標、資料、限制、交付物與驗收方式，再產出可由人檢查的成果。
+
+Aimo 將內容工作拆成市場雷達員、定位策略員、選題企劃員、內容創作員與內容審核員。AI 負責研究、整理與草稿；事實確認、公開發布、對外承諾、價格、付款與帳號權限仍由人決定。品牌工作方式是：「Codex 做後台，AI 短劇與 AI 自媒體做前台，AI 內容生產線做結果。」
+
+這套方法適合想穩定產出內容的零基礎創作者、想把經驗整理成文章或教材的講師與顧問、想減少重複內容工作的上班族，以及沒有完整團隊的小型經營者。SEO 與 GEO 都不能保證排名、流量或被 AI 推薦。
 
 ## AI 產品與市場需求
 AI 與 Codex 降低了網站、App、Agent 與自動化流程的開發門檻，但產品做得出來不等於有人願意買。Aimo 建議先回答四個問題：做給誰、解決什麼問題、客戶為什麼願意付費、要去哪裡找到客戶；再依照「客戶 → 需求 → MVP → 開發」的順序驗證。AI 負責加速製作，人仍負責市場、事實、價格與商業判斷。

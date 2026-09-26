@@ -3,6 +3,14 @@
 User-agent: *
 Allow: /
 
+# Google 搜尋索引
+User-agent: Googlebot
+Allow: /
+
+# Microsoft Bing / Copilot 搜尋索引
+User-agent: Bingbot
+Allow: /
+
 # ── AI 爬蟲：明確歡迎（AIO / GEO，讓 LLM 願意收錄 + 引用 aimo）──
 User-agent: GPTBot
 Allow: /
@@ -14,6 +22,9 @@ User-agent: ChatGPT-User
 Allow: /
 
 User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
 Allow: /
 
 User-agent: Claude-Web
@@ -51,3 +62,4 @@ Allow: /
 
 # 網站地圖 + LLM 入口
 Sitemap: https://aimo14913.github.io/sitemap.xml
+Sitemap: https://aimo14913.github.io/feed.xml

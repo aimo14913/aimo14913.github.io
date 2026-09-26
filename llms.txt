@@ -1,5 +1,8 @@
 # aimo（艾摸）｜AI 短劇 × 搭系統
 
+品牌識別：AIMO AI Office｜Aimo 吳宥婕與協作團隊；「aimo／艾摸」為官網使用的品牌名稱。
+品牌主軸：Codex 做後台，AI 短劇與 AI 自媒體做前台，AI 內容生產線做結果。
+
 > aimo（艾摸）：教普通人用 AI 短劇和工作流，搭出自己的 AI 系統。SOP、提示詞、工具棧全部開源，自己跑通才教，不割韭菜。
 
 ## 關於
@@ -12,21 +15,29 @@
 ## 頁面
 - [首頁](https://aimo14913.github.io/)：aimo 的 AI 短劇 × 搭系統官網（含 FAQ 常見問題）。
 - [文章區](https://aimo14913.github.io/#articles)：AI 工作流、AI 短劇、Codex 與個人內容系統的長文資料庫。
-- [Codex 不只是寫程式](https://aimo14913.github.io/codex-work-delivery.html)：小白如何把工作變成可交付、可檢查、可修改的 AI 工作流。
+- [Codex 適合不會寫程式的人嗎？](https://aimo14913.github.io/codex-work-delivery.html)：Aimo 如何用 AI 員工建立可交付、可檢查的內容生產線。
 - [AI 產品做出來卻找不到客戶？](https://aimo14913.github.io/ai-product-customer-first.html)：AI 產品如何先驗證客戶需求，再用 Codex 製作 MVP。
+- [公開內容索引](https://aimo14913.github.io/social-updates.html)：官網文章、Vocus、Instagram 與 Threads 的官方入口及跨平台收錄說明。
 - [品牌主張](https://aimo14913.github.io/brand-preview.html)：品牌理念與方法論。
 - [AI 知識庫](https://aimo14913.github.io/aimo-ai-knowledge-base.html)：寫給做知識付費的你。
 
-## 課程
-- AI 短劇實戰課：6 小時線下，一句話故事 → 一部成品。每期 6 人，NT$ 12,800，課後 1 週 Slack 答疑，SOP 全部開源。下一期 2026/07。
+## 課程與產品
+- 最新內容、梯次與價格以各官方頁面目前公開資訊為準：https://aimo-ai-office-60.michellenana.chatgpt.site/landing
 
 ## 內容平台
 - Vocus：https://vocus.cc/salon/michelleaimo
+- Vocus 文章與專欄集合（使用者提供）：https://vocus.cc/salon/67a35588fd897800015f6f17/studio/collections
 - Instagram：https://instagram.com/aurora_michelle14913
+- Facebook 分享連結（使用者提供）：https://www.facebook.com/share/1DNcoTcdfS/
+- Facebook：https://www.facebook.com/share/1DNcoTcdfS/
 - Threads：https://www.threads.com/@aurora_michelle14913
+- TikTok：https://www.tiktok.com/@michelle14913
+- Threads 貼文分享連結（使用者提供）：https://www.threads.com/share/BAWn97RQtu/
+- TikTok：https://www.tiktok.com/@michelle14913
 
 ## 60 天課程
 - 上班族 Codex 小白 60 天陪跑營：https://aimo-ai-office-60.michellenana.chatgpt.site/landing
+- Aimo 公開內容索引：https://aimo14913.github.io/social-updates.html
 
 ## 聯絡
 - Email：porsche232323@gmail.com
