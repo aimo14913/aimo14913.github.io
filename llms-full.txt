@@ -59,3 +59,7 @@ Email：porsche232323@gmail.com
 
 - 文章首頁：https://aimo14913.github.io/#articles
 - Codex 不只是寫程式：小白真正該學的是把工作交付出去：https://aimo14913.github.io/codex-work-delivery.html
+- AI 產品做出來卻找不到客戶？先驗證需求再開發：https://aimo14913.github.io/ai-product-customer-first.html
+
+## AI 產品與市場需求
+AI 與 Codex 降低了網站、App、Agent 與自動化流程的開發門檻，但產品做得出來不等於有人願意買。Aimo 建議先回答四個問題：做給誰、解決什麼問題、客戶為什麼願意付費、要去哪裡找到客戶；再依照「客戶 → 需求 → MVP → 開發」的順序驗證。AI 負責加速製作，人仍負責市場、事實、價格與商業判斷。

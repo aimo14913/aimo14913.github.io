@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AI 產品做出來卻找不到客戶？先驗證需求再開發｜Aimo 吳宥婕</title>
+  <meta name="description" content="AI 與 Codex 降低開發門檻後，產品成功的關鍵從能不能做，轉向做給誰、解決什麼問題、客戶為何付費。Aimo 吳宥婕整理需求驗證、獲客與 MVP 的實作順序。">
+  <meta name="author" content="Aimo 吳宥婕"><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+  <link rel="canonical" href="https://aimo14913.github.io/ai-product-customer-first.html">
+  <meta property="og:type" content="article"><meta property="og:locale" content="zh_TW"><meta property="og:site_name" content="AIMO AI Office">
+  <meta property="og:title" content="AI 產品做出來卻找不到客戶？先驗證需求再開發"><meta property="og:description" content="AI 降低開發門檻後，真正困難的是需求判斷、獲客與成交。">
+  <meta property="og:url" content="https://aimo14913.github.io/ai-product-customer-first.html"><meta property="og:image" content="https://aimo14913.github.io/aimo-mascot.png">
+  <meta property="article:published_time" content="2026-09-26"><meta property="article:modified_time" content="2026-09-26"><meta property="article:author" content="Aimo 吳宥婕">
+  <link rel="icon" href="aimo-mascot.png"><link rel="stylesheet" href="articles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://aimo14913.github.io/ai-product-customer-first.html#article","headline":"AI 產品做出來卻找不到客戶？先驗證需求再開發","description":"AI 與 Codex 降低開發門檻後，產品成功的關鍵從能不能做，轉向需求驗證、獲客與成交。","datePublished":"2026-09-26","dateModified":"2026-09-26","inLanguage":"zh-Hant","mainEntityOfPage":"https://aimo14913.github.io/ai-product-customer-first.html","image":"https://aimo14913.github.io/aimo-mascot.png","keywords":["AI 產品","Codex","MVP","需求驗證","獲客","一人公司"],"author":{"@id":"https://aimo14913.github.io/#aimo"},"publisher":{"@id":"https://aimo14913.github.io/#aimo"},"isPartOf":{"@id":"https://aimo14913.github.io/#website"},"citation":"https://vocus.cc/article/6ab74e7efd89780001f375f5","about":[{"@type":"Thing","name":"AI 產品開發"},{"@type":"Thing","name":"需求驗證"},{"@type":"Thing","name":"Codex"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"AI 時代做產品，應該先開發還是先找客戶？","acceptedAnswer":{"@type":"Answer","text":"先確認目標客群與真實問題，再用最小可行產品驗證。AI 能加快開發，但不能替代市場需求。"}},{"@type":"Question","name":"不會寫程式，可以用 Codex 做 MVP 嗎？","acceptedAnswer":{"@type":"Answer","text":"可以把 Codex 用於網站、流程或原型製作，但仍要由人定義目標、檢查成果，並負責市場與商業判斷。"}},{"@type":"Question","name":"AI 產品找不到客戶時，應先檢查什麼？","acceptedAnswer":{"@type":"Answer","text":"先檢查產品服務誰、解決的問題是否急迫、客戶是否願意付費，以及你是否有穩定接觸這群人的管道。"}}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://aimo14913.github.io/"},{"@type":"ListItem","position":2,"name":"文章","item":"https://aimo14913.github.io/#articles"},{"@type":"ListItem","position":3,"name":"AI 產品與客戶需求","item":"https://aimo14913.github.io/ai-product-customer-first.html"}]}]}
+  </script>
+</head>
+<body>
+<header class="site"><nav class="nav"><a class="logo" href="./">aimo<span>.</span></a><div class="nav-links"><a href="./#articles">所有文章</a><a href="./">首頁</a></div></nav></header>
+<main class="article-shell">
+  <nav class="breadcrumbs" aria-label="麵包屑"><a href="./">首頁</a> ／ <a href="./#articles">文章</a> ／ AI 產品與客戶需求</nav>
+  <article>
+    <header class="article-head"><div class="eyebrow">AI PRODUCT · MARKET</div><h1>AI 產品做出來卻找不到客戶？先驗證需求再開發</h1><div class="article-meta"><span>作者：<a rel="author" href="./#about">Aimo 吳宥婕</a></span><time datetime="2026-09-26">發布：2026 年 9 月 26 日</time><span>原文同步自 <a href="https://vocus.cc/article/6ab74e7efd89780001f375f5" rel="alternate">vocus</a></span></div></header>
+    <p class="summary"><strong>先說結論：</strong>AI 與 Codex 正在降低產品開發門檻，但做得出來不等於有人願意買。先確認客戶、問題與付費理由，再用 MVP 快速驗證，能避免把時間花在沒有需求的功能上。</p>
+    <nav class="toc" aria-label="文章目錄"><strong>這篇文章會回答</strong><ol><li><a href="#shift">AI 改變了什麼？</a></li><li><a href="#why">為什麼做出產品仍可能沒客戶？</a></li><li><a href="#order">AI 產品應該用什麼順序開發？</a></li><li><a href="#checklist">開始前要回答哪些問題？</a></li></ol></nav>
+    <div class="article-body">
+      <h2 id="shift">AI 降低的是開發門檻，不是市場門檻</h2>
+      <p>以前要把一個產品從想法做到可以使用，往往需要前端、後端、資料庫與部署能力。現在透過 Codex、Claude Code 等 AI 開發工具，不是工程師的人也能先做網站、App、Agent 或自動化流程的 MVP。</p>
+      <p>這讓「能不能做出來」不再是唯一難題。當相似功能能被更快複製，產品是否對準真實需求、能不能接觸到客戶，以及客戶是否信任你，會變得更重要。</p>
+      <h2 id="why">產品做出來，為什麼還是找不到客戶？</h2>
+      <p>常見原因不是功能不夠多，而是開發前沒有回答四個問題：產品做給誰、解決什麼問題、客戶為什麼願意付費，以及要去哪裡找到他。</p>
+      <p>如果只從「我能做什麼」出發，很容易做出技術上可行、商業上卻沒有人急著需要的產品。AI 可以加快製作，卻不會自動產生市場需求。</p>
+      <h2 id="order">AI 產品的實作順序：客戶 → 需求 → MVP → 開發</h2>
+      <p>較穩健的順序，是先接觸目標客群，確認他們反覆出現且願意處理的問題；再用最小版本測試解法，而不是先把所有功能做完。</p>
+      <ol><li><strong>選定一群人：</strong>描述具體角色與工作情境。</li><li><strong>確認一個問題：</strong>蒐集真實對話、提問或工作紀錄。</li><li><strong>定義付費結果：</strong>說清楚對方付費後要得到什麼改變。</li><li><strong>做最小版本：</strong>只完成足以驗證需求的核心流程。</li><li><strong>根據回饋調整：</strong>保留被使用的功能，停止沒人需要的假設。</li></ol>
+      <h2 id="checklist">開發前的四題需求檢查</h2>
+      <div class="note"><strong>做給誰？</strong><br>不要只寫「創作者」，要具體到零基礎講師、一人公司經營者或需要穩定產出內容的小團隊。<br><br><strong>解決什麼問題？</strong><br>描述正在發生的工作困難，而不是只描述工具功能。<br><br><strong>為什麼願意付錢？</strong><br>確認問題是否足夠急迫，以及解法能否產生可檢查的成果。<br><br><strong>去哪裡找到客戶？</strong><br>列出可持續接觸的內容平台、社群、合作夥伴或既有客戶關係。</div>
+      <h2>這也是 Aimo 使用 Codex 的方法</h2>
+      <p>我是 Aimo 吳宥婕，持續實作 Codex、AI 短劇、AI 自媒體與內容工作流。我的重點不是只教一個工具，而是把真實工作拆成可交付、可檢查的成果，再由人保留事實、價格、發布與商業判斷的最後決定權。</p>
+      <p>對零基礎使用者來說，可以先從一件小工作開始：用真實客戶問題定義成果，再讓 Codex 協助整理資料、建立 MVP 或內容頁面。工具負責加速，市場判斷仍然由你負責。</p>
+      <h2>常見問題</h2>
+      <h3>AI 時代做產品，應該先開發還是先找客戶？</h3><p>先確認目標客群與真實問題，再用最小可行產品驗證。AI 能加快開發，但不能替代市場需求。</p>
+      <h3>不會寫程式，可以用 Codex 做 MVP 嗎？</h3><p>可以。你仍需要說清楚目標、輸入資料、限制與驗收標準，並親自檢查成果是否真的能用。</p>
+      <h3>AI 產品找不到客戶時，應先檢查什麼？</h3><p>先檢查產品服務誰、解決的問題是否急迫、客戶是否願意付費，以及你是否有穩定接觸這群人的管道。</p>
+    </div>
+    <aside class="author-box"><img src="aimo-mascot.png" alt="Aimo 吳宥婕"><div><strong>Aimo 吳宥婕｜AIMO AI Office</strong><br><span>用 Codex 教零基礎小白打造 AI 內容生產線；以 AI 短劇與 AI 自媒體作為看得見的內容入口。</span></div></aside>
+  </article>
+</main>
+<footer><div class="wrap"><strong>AIMO AI Office｜Aimo 吳宥婕與協作團隊</strong><p><a href="./#articles">回到所有文章</a> · <a href="mailto:porsche232323@gmail.com">聯絡 Aimo</a></p></div></footer>
+</body></html>
