@@ -696,8 +696,79 @@
       color: rgba(237, 229, 211, 0.7);
       line-height: 1.75;
     }
+    .home-articles {
+      margin-top: 88px;
+      padding-top: 64px;
+      border-top: 1px solid var(--border);
+      scroll-margin-top: 90px;
+    }
+    .home-articles-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+    .home-articles-head h3 {
+      margin: 0;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(32px, 5vw, 52px);
+      color: var(--fg);
+      line-height: 1.15;
+    }
+    .home-articles-head p {
+      max-width: 520px;
+      margin: 0;
+      color: var(--fg-soft);
+      line-height: 1.75;
+    }
+    .home-article-list { display: grid; gap: 16px; }
+    .home-article-card {
+      display: grid;
+      grid-template-columns: 150px 1fr auto;
+      align-items: center;
+      gap: 28px;
+      padding: 28px 30px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--fg);
+      text-decoration: none;
+      background: var(--card);
+      transition: transform .25s, border-color .25s, background .25s;
+    }
+    .home-article-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--burn);
+      background: var(--bg-2);
+    }
+    .home-article-meta {
+      font-family: var(--mono);
+      font-size: 11px;
+      line-height: 1.8;
+      letter-spacing: .1em;
+      color: var(--burn);
+    }
+    .home-article-card h4 {
+      margin: 0 0 8px;
+      font-family: var(--serif);
+      font-size: 25px;
+      line-height: 1.35;
+      color: var(--fg);
+    }
+    .home-article-card p {
+      margin: 0;
+      color: var(--fg-soft);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .home-article-arrow { color: var(--burn); font-size: 22px; }
     @media (max-width: 880px) {
       .pillars { grid-template-columns: 1fr; }
+      .home-articles-head { display: block; }
+      .home-articles-head p { margin-top: 16px; }
+      .home-article-card { grid-template-columns: 1fr; gap: 12px; }
+      .home-article-arrow { display: none; }
     }
 
     /* ============================================================
@@ -1228,6 +1299,7 @@
         <li><a href="#about">關於</a></li>
         <li><a href="#works">作品</a></li>
         <li><a href="#hub">內容</a></li>
+        <li><a href="#articles">文章</a></li>
         <li><a href="#find">聯絡</a></li>
         <li><a href="https://vocus.cc/salon/michelleaimo">Vocus</a></li>
         <li><a href="#course">課程</a></li>
@@ -1406,6 +1478,22 @@
           <p>完全沒接觸過 AI 的學員，6 小時做出第一支屬於自己的短劇。看完我哭了。學員案例集持續累積中。</p>
           <span class="link">看案例 →</span>
         </a>
+      </div>
+      <div class="home-articles" id="articles">
+        <div class="home-articles-head">
+          <h3>aimo 的文章</h3>
+          <p>所有文章都收錄在這個官網裡。從真實工作問題出發，整理成 AI 也能理解、人也能直接實作的內容。</p>
+        </div>
+        <div class="home-article-list" aria-label="aimo 文章列表">
+          <a class="home-article-card" href="articles/codex-work-delivery.html">
+            <div class="home-article-meta"><time datetime="2026-09-24">2026.09.24</time><br>AI 工作流 · CODEX</div>
+            <div>
+              <h4>Codex 不只是寫程式：小白真正該學的是把工作交付出去</h4>
+              <p>對零基礎創作者來說，重點不是突然學會程式，而是把工作變成能交付、檢查與修改的流程。</p>
+            </div>
+            <span class="home-article-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -1814,6 +1902,7 @@
           <a href="https://vocus.cc/salon/michelleaimo">Vocus</a>
           <a href="https://instagram.com/aurora_michelle14913">Instagram</a>
           <a href="https://www.threads.com/@aurora_michelle14913">Threads</a>
+          <a href="#articles">文章</a>
           <a href="mailto:porsche232323@gmail.com">Email</a>
           <a href="#course">課程</a>
           <a href="#terms">影像使用規範</a>

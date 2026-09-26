@@ -55,3 +55,7 @@ AI 短劇實戰課：6 小時線下，從一句話故事到一部完整 AI 短�
 
 ## 聯絡
 Email：porsche232323@gmail.com
+# 文章資料庫
+
+- 文章首頁：https://aimo14913.github.io/articles/
+- Codex 不只是寫程式：小白真正該學的是把工作交付出去：https://aimo14913.github.io/articles/codex-work-delivery.html
