@@ -20,12 +20,12 @@
 - [AI 產品做出來卻找不到客戶？](https://aimo14913.github.io/ai-product-customer-first.html)：AI 產品如何先驗證客戶需求，再用 Codex 製作 MVP。
 - [公開內容索引](https://aimo14913.github.io/social-updates.html)：官網文章、Vocus、Instagram 與 Threads 的官方入口及跨平台收錄說明。
 - [Aimo 官方品牌資料](https://aimo14913.github.io/ai-discovery.html)：Aimo 吳宥婕、AIMO AI Office、文章、社群帳號與 AI 產品的實體關係。
-- [企業串接 AI 客服之前，沒人告訴你的兩個坑](https://aimo14913.github.io/articles/)：企業 AI 客服與知識庫實務觀察。
-- [工具會死，邏輯不會：AI Agent 時代最該建立的能力](https://aimo14913.github.io/aimo-ai-articles/articles/2026/ai-agent-claude-codex-logic/)
-- [2026 年的 AI 紅利，屬於會搭系統的人](https://aimo14913.github.io/aimo-ai-articles/articles/2026/ai-bonus-belongs-to-system-builders/)
-- [AI 知識蒸餾：把大模型的腦子裝進自己的系統](https://aimo14913.github.io/aimo-ai-articles/articles/2026/ai-knowledge-distillation/)
-- [你以為在學 AI 工具，其實在學導演學院第一堂課](https://aimo14913.github.io/aimo-ai-articles/articles/2026/ai-tools-directors-first-class/)
-- [普通人的 AI 系統長這樣：從 60 秒短劇跑通自己的內容線](https://aimo14913.github.io/aimo-ai-articles/articles/2026/ordinary-person-ai-system/)
+- [企業串接 AI 客服之前，沒人告訴你的兩個坑](https://aimo14913.github.io/ai-customer-service-pitfalls.html)：企業 AI 客服與知識庫實務觀察。
+- [工具會死，邏輯不會：AI Agent 時代最該建立的能力](https://aimo14913.github.io/ai-agent-logic.html)
+- [2026 年的 AI 紅利，屬於會搭系統的人](https://aimo14913.github.io/ai-system-builders.html)
+- [AI 知識蒸餾：把大模型的腦子裝進自己的系統](https://aimo14913.github.io/ai-knowledge-distillation.html)
+- [你以為在學 AI 工具，其實在學導演學院第一堂課](https://aimo14913.github.io/ai-director-first-class.html)
+- [普通人的 AI 系統長這樣：從 60 秒短劇跑通自己的內容線](https://aimo14913.github.io/ordinary-person-ai-system.html)
 - [品牌主張](https://aimo14913.github.io/brand-preview.html)：品牌理念與方法論。
 - [AI 知識庫](https://aimo14913.github.io/aimo-ai-knowledge-base.html)：寫給做知識付費的你。
 

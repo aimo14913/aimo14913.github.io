@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AI 知識蒸餾：把大模型的腦子，裝進你自己的系統｜Aimo 吳宥婕</title>
+  <meta name="description" content="技術圈用「知識蒸餾」做出便宜的小模型，普通人用「蒸餾思維」把大模型的判斷力壓縮進自己的 SOP、提示詞、工作流，做出別人複製不了的個人 AI 系統。附 3 個今天就能動手的動作。"><meta name="author" content="Aimo 吳宥婕"><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+  <link rel="canonical" href="https://aimo14913.github.io/ai-knowledge-distillation.html">
+  <meta property="og:type" content="article"><meta property="og:locale" content="zh_TW"><meta property="og:site_name" content="AIMO AI Office"><meta property="og:title" content="AI 知識蒸餾：把大模型的腦子，裝進你自己的系統"><meta property="og:description" content="技術圈用「知識蒸餾」做出便宜的小模型，普通人用「蒸餾思維」把大模型的判斷力壓縮進自己的 SOP、提示詞、工作流，做出別人複製不了的個人 AI 系統。附 3 個今天就能動手的動作。"><meta property="og:url" content="https://aimo14913.github.io/ai-knowledge-distillation.html"><meta property="og:image" content="https://aimo14913.github.io/aimo-mascot.png">
+  <meta property="article:published_time" content="2026-07-02"><meta property="article:author" content="Aimo 吳宥婕">
+  <link rel="icon" href="aimo-mascot.png"><link rel="stylesheet" href="articles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&amp;family=Noto+Sans+TC:wght@400;500;700&amp;family=Noto+Serif+TC:wght@600;700;800&amp;display=swap" rel="stylesheet">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI 知識蒸餾：把大模型的腦子，裝進你自己的系統","description":"技術圈用「知識蒸餾」做出便宜的小模型，普通人用「蒸餾思維」把大模型的判斷力壓縮進自己的 SOP、提示詞、工作流，做出別人複製不了的個人 AI 系統。附 3 個今天就能動手的動作。","datePublished":"2026-07-02","inLanguage":"zh-Hant","mainEntityOfPage":"https://aimo14913.github.io/ai-knowledge-distillation.html","author":{"@id":"https://aimo14913.github.io/#aimo"},"publisher":{"@id":"https://aimo14913.github.io/#aimo"},"citation":"https://vocus.cc/article/6a1c3a05fd897800010ad55d"}</script>
+</head>
+<body>
+<header class="site"><nav class="nav"><a class="logo" href="./">aimo<span>.</span></a><div class="nav-links"><a href="articles.html">文章作品庫</a><a href="./#works">作品</a><a href="./">首頁</a></div></nav></header>
+<main class="article-shell"><nav class="breadcrumbs" aria-label="麵包屑"><a href="./">首頁</a> ／ <a href="articles.html">文章作品庫</a> ／ AI 知識蒸餾：把大模型的腦子，裝進你自己的系統</nav><article>
+  <header class="article-head"><div class="eyebrow">KNOWLEDGE · SOP</div><h1>AI 知識蒸餾：把大模型的腦子，裝進你自己的系統</h1><div class="article-meta"><span>作者：<a rel="author" href="./#about">Aimo 吳宥婕</a></span><time datetime="2026-07-02">發布：2026-07-02</time><span>原文：<a href="https://vocus.cc/article/6a1c3a05fd897800010ad55d" rel="alternate">Vocus</a></span></div></header>
+  <p class="summary"><strong>文章摘要：</strong>技術圈用「知識蒸餾」做出便宜的小模型，普通人用「蒸餾思維」把大模型的判斷力壓縮進自己的 SOP、提示詞、工作流，做出別人複製不了的個人 AI 系統。附 3 個今天就能動手的動作。</p>
+  <div class="article-body">
+
+<h2 id="-一句話摘要">📌 一句話摘要</h2>
+
+<p><strong>技術圈用「知識蒸餾」做出便宜又快的小模型；普通人用「蒸餾思維」把大模型每次幫你做的判斷抄下來、整理成自己的 SOP，就能把昂貴、不穩定、別人擁有的智慧，固化成便宜、穩定、自己擁有的個人 AI 系統。</strong></p>
+
+
+
+<h2 id="-核心要點">🎯 核心要點</h2>
+
+<ol>
+  <li><strong>知識蒸餾的本質是「老師傅帶徒弟」</strong> — 用大模型當老師、小模型當徒弟，反覆學到 90% 像但只要 1/10 成本；普通人版就是把 AI 的判斷蒸餾成自己的規則</li>
+  <li><strong>你一直在浪費 GPT-4 的判斷力</strong> — 每次從零開始跟 AI 解釋需求，成品都不一樣；把每次「對，就是這個」的判斷抄下來變成 SOP，才能穩定複用</li>
+  <li><strong>作者實測：短劇製作從 6 小時掉到 90 分鐘</strong> — 把 30 部短劇的判斷蒸餾成 200 條規則後，風格穩定到觀眾說「一看就是 aimo 風格」</li>
+  <li><strong>2026 年最值錢的不是會用 AI，是會蒸餾 AI</strong> — 工具人人會用就不值錢，能把 AI 能力固化成只有你能複製的判斷系統才是壁壘</li>
+  <li><strong>3 個今天就能動手的動作</strong> — ① 建立決策日記 ② 把判斷模式寫成 SOP ③ 把 SOP 變成自動觸發（skill / Custom GPT / 固定檔案）</li>
+  <li><strong>回報是後置的</strong> — 前 30 次會覺得浪費時間，但過了臨界點做事速度大幅提升；重點不是贏別人，是不再被流程拖住</li>
+</ol>
+
+
+
+<h2 id="-可引用的觀點">💡 可引用的觀點</h2>
+
+<blockquote>
+  <p><strong>「你不再是 AI 的使用者，你變成 AI 系統的擁有者。」</strong></p>
+</blockquote>
+
+<blockquote>
+  <p><strong>「我把它當神燈，每次許願都從零開始。」</strong></p>
+</blockquote>
+
+<blockquote>
+  <p><strong>「會用 ChatGPT 寫文案的人 2026 年滿街都是。第一種人，明年的競爭對手是另外 1000 萬個人；第二種人，競爭對手是自己過去的版本。」</strong></p>
+</blockquote>
+
+<blockquote>
+  <p><strong>「2026 年最值錢的不是會用 AI，是會蒸餾 AI。」</strong></p>
+</blockquote>
+
+<blockquote>
+  <p><strong>「AI 的能力是別人的，AI 的判斷被你抄下來、整理成你的 SOP 之後，才是你的。」</strong></p>
+</blockquote>
+
+
+
+<h2 id="正文">正文</h2>
+
+<p>先說結論。</p>
+
+<p>2025 年到 2026 年，AI 圈最值錢的一個詞，不是「Agent」，不是「多模態」，是知識蒸餾（Knowledge Distillation）。</p>
+
+<p>技術圈用這個詞做了 GPT-4o-mini、Claude Haiku、DeepSeek 蒸餾版這些便宜又快的模型。</p>
+
+<p>但對普通人來說，這個詞背後的思維才是真正能用的東西。</p>
+
+<p>我這篇要講的不是「蒸餾的技術原理」，那個 Google 一搜一堆。</p>
+
+<p>我要講的是：普通人怎麼用「蒸餾思維」搭出自己的 AI 系統，把大模型的判斷力壓縮進你自己的 SOP、提示詞、工作流裡。</p>
+
+<p>這件事我自己跑了大概半年，從做 AI 短劇、教課、寫文章到產 IG 視覺，全部都在用同一套思維。今天把它拆給你。</p>
+
+
+
+<h3 id="一什麼是知識蒸餾用一個比喻講完">一、什麼是「知識蒸餾」？用一個比喻講完</h3>
+
+<p>假設你有一個經驗 30 年的老師傅，腦子裡裝了一萬個判斷規則。</p>
+
+<p>但他帶不了那麼多徒弟，也不可能每件事都親自做。</p>
+
+<p>於是他做一件事：把自己每次做決定時「為什麼這樣做、不那樣做」的判斷過程，全部講出來，讓徒弟在旁邊照著做 1000 次。</p>
+
+<p>1000 次之後，徒弟雖然不是老師傅，但 80% 的判斷已經跟老師傅一樣了。</p>
+
+<p>而且徒弟比老師傅快，比老師傅便宜，可以同時帶 100 個案子。</p>
+
+<p>這就是知識蒸餾。</p>
+
+<p>技術上，AI 圈做的事是：用 GPT-4 這種大模型當「老師」，讓 GPT-4o-mini 這種小模型當「徒弟」，徒弟反覆學老師的回答，學到 90% 像，但只要 1/10 的成本。</p>
+
+<p>OpenAI、Anthropic、Google 現在的便宜版模型，幾乎全部都是這樣蒸餾出來的。</p>
+
+<p>但這篇不是要你去訓練模型。</p>
+
+<p>這篇是要告訴你，這個思維，普通人怎麼用。</p>
+
+
+
+<h3 id="二為什麼這對你很重要">二、為什麼這對你很重要？</h3>
+
+<p>我先講一個我自己卡了很久的事。</p>
+
+<p>剛開始做 AI 短劇的時候，我的工作流是：每次想拍一部短劇，就重新打開 ChatGPT，重新跟它解釋一遍我要什麼、我的風格、我的觀眾、我的鏡頭偏好。</p>
+
+<p>每次都重新講。</p>
+
+<p>每次的成品都長得不一樣。</p>
+
+<p>每次都覺得「這次不太對，下次再調整」。</p>
+
+<p>跑了 30 部之後我才發現一件事：我一直在浪費 GPT-4 的判斷力。</p>
+
+<p>GPT-4 每次都很努力幫我，但它每次都不記得我是誰、我要什麼。</p>
+
+<p>我把它當神燈，每次許願都從零開始。</p>
+
+<p>直到有一天我做了一件事：</p>
+
+<p>我打開一個檔案，把這 30 部短劇裡，GPT-4 給我的每一個讓我覺得「對，就是這個」的判斷，全部抄下來。為什麼這個分鏡好、為什麼這個開場 hook 抓得住人、為什麼這個音效該放在這裡。</p>
+
+<p>抄完之後，我發現大概 200 條規則就把我要的東西寫清楚了。</p>
+
+<p>我把這 200 條規則寫成一份「aimo 短劇生產 SOP」，扔回 Claude，每次新案子直接讀這份。</p>
+
+<p>第 31 部之後，我做短劇的時間從 6 小時掉到 90 分鐘。風格穩了。觀眾留言開始說「一看就是 aimo 風格」。</p>
+
+<p>這就是普通人版的知識蒸餾。</p>
+
+<p>我把 GPT-4 在 30 部短劇裡幫我做的判斷，蒸餾成 200 條我自己的規則。</p>
+
+<p>從那之後，我不再依賴 AI 每次重新判斷。我依賴的是我自己的系統，AI 只是執行單位。</p>
+
+<p>這件事的差別是什麼？</p>
+
+<p>差別是：你不再是 AI 的使用者，你變成 AI 系統的擁有者。</p>
+
+
+
+<h3 id="三為什麼這是-2026-年最重要的能力">三、為什麼這是 2026 年最重要的能力？</h3>
+
+<p>我講一個你可能沒注意到的事。</p>
+
+<p>2026 年開始，AI 工具會越來越多、越來越便宜、越來越強。</p>
+
+<p>這聽起來是好事，但對「靠 AI 賺錢」的人來說，是一個壞消息。</p>
+
+<p>因為當工具人人都能用、人人都會用，工具本身就不值錢了。</p>
+
+<p>值錢的是什麼？</p>
+
+<p>值錢的是：你能不能把 AI 的能力，固化成只有你能複製的判斷系統。</p>
+
+<p>換個說法：</p>
+
+<ul>
+  <li>會用 ChatGPT 寫文案的人，2026 年滿街都是</li>
+  <li>但有一套「aimo 風格文案生產 SOP」、能穩定產出同一種調性內容的人——這是別人複製不走的東西</li>
+</ul>
+
+<p>第一種人，明年的競爭對手是另外 1000 萬個人。</p>
+
+<p>第二種人，競爭對手是自己過去的版本。</p>
+
+<p>這就是為什麼我說，2026 年最值錢的不是會用 AI，是會蒸餾 AI。</p>
+
+
+
+<h3 id="四普通人怎麼做3-個今天就能動手的動作">四、普通人怎麼做？3 個今天就能動手的動作</h3>
+
+<p>我把這半年實際在做的事，壓縮成 3 個動作。每一個都不難，但組合起來就是你自己的系統。</p>
+
+<h4 id="動作-1建立你的決策日記">動作 1：建立你的「決策日記」</h4>
+
+<p>打開一個檔案，從今天開始，每次你用 AI 做事，記錄 3 件事：</p>
+
+<ol>
+  <li>我問了什麼</li>
+  <li>AI 回了什麼</li>
+  <li>我覺得哪部分對、哪部分不對，為什麼</li>
+</ol>
+
+<p>不用寫長。每次 5 行就好。</p>
+
+<p>跑 30 次之後，你會看到你自己的「判斷模式」浮出來。</p>
+
+<p>這就是你的原料。</p>
+
+<h4 id="動作-2把判斷模式寫成-sop">動作 2：把判斷模式寫成 SOP</h4>
+
+<p>把決策日記裡反覆出現的判斷，整理成一份檢核表。</p>
+
+<p>格式不重要，重點是讓 AI 每次新案子能讀到。</p>
+
+<p>我自己的格式是這樣：</p>
+
+</div>
+  <aside class="author-box"><img src="aimo-mascot.png" alt="Aimo 吳宥婕"><div><strong>Aimo 吳宥婕｜AIMO AI Office</strong><br><span>用 Codex 整理資料與工作流程，以 AI 短劇和自媒體讓想法被看見，再用內容網站沉澱作品、觀點與服務。</span></div></aside>
+</article></main>
+<footer><div class="wrap"><strong>AIMO AI Office｜Aimo 吳宥婕與協作團隊</strong><p><a href="articles.html">回到文章作品庫</a> · <a href="mailto:porsche232323@gmail.com">聯絡 Aimo</a></p></div></footer>
+</body></html>

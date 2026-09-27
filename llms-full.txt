@@ -79,12 +79,12 @@ Email：porsche232323@gmail.com
 - Codex 適合不會寫程式的人嗎？Aimo 用 AI 員工建立內容生產線的實作方法：https://aimo14913.github.io/codex-work-delivery.html
 - AI 產品做出來卻找不到客戶？先驗證需求再開發：https://aimo14913.github.io/ai-product-customer-first.html
 - Aimo 公開內容索引（官網、Vocus、Instagram、Threads）：https://aimo14913.github.io/social-updates.html
-- 企業串接 AI 客服之前，沒人告訴你的兩個坑：https://aimo14913.github.io/articles/
-- 工具會死，邏輯不會：AI Agent 時代最該建立的能力：https://aimo14913.github.io/aimo-ai-articles/articles/2026/ai-agent-claude-codex-logic/
-- 2026 年的 AI 紅利，屬於會搭系統的人：https://aimo14913.github.io/aimo-ai-articles/articles/2026/ai-bonus-belongs-to-system-builders/
-- AI 知識蒸餾：把大模型的腦子裝進自己的系統：https://aimo14913.github.io/aimo-ai-articles/articles/2026/ai-knowledge-distillation/
-- 你以為在學 AI 工具，其實在學導演學院第一堂課：https://aimo14913.github.io/aimo-ai-articles/articles/2026/ai-tools-directors-first-class/
-- 普通人的 AI 系統長這樣：從一支 60 秒短劇跑通內容線：https://aimo14913.github.io/aimo-ai-articles/articles/2026/ordinary-person-ai-system/
+- 企業串接 AI 客服之前，沒人告訴你的兩個坑：https://aimo14913.github.io/ai-customer-service-pitfalls.html
+- 工具會死，邏輯不會：AI Agent 時代最該建立的能力：https://aimo14913.github.io/ai-agent-logic.html
+- 2026 年的 AI 紅利，屬於會搭系統的人：https://aimo14913.github.io/ai-system-builders.html
+- AI 知識蒸餾：把大模型的腦子裝進自己的系統：https://aimo14913.github.io/ai-knowledge-distillation.html
+- 你以為在學 AI 工具，其實在學導演學院第一堂課：https://aimo14913.github.io/ai-director-first-class.html
+- 普通人的 AI 系統長這樣：從一支 60 秒短劇跑通內容線：https://aimo14913.github.io/ordinary-person-ai-system.html
 
 ## Codex 與 AI 員工內容生產線
 Aimo（吳宥婕）把 Codex 用在 AI 短劇、AI 自媒體與內容工作流。對零基礎創作者、講師、顧問與小型經營者而言，Codex 的實際用途不是把人變成工程師，而是把模糊工作拆成目標、資料、限制、交付物與驗收方式，再產出可由人檢查的成果。

@@ -49,32 +49,32 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://aimo14913.github.io/articles/</loc>
+    <loc>https://aimo14913.github.io/ai-customer-service-pitfalls.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://aimo14913.github.io/aimo-ai-articles/articles/2026/ai-agent-claude-codex-logic/</loc>
+    <loc>https://aimo14913.github.io/ai-agent-logic.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://aimo14913.github.io/aimo-ai-articles/articles/2026/ai-bonus-belongs-to-system-builders/</loc>
+    <loc>https://aimo14913.github.io/ai-system-builders.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://aimo14913.github.io/aimo-ai-articles/articles/2026/ai-knowledge-distillation/</loc>
+    <loc>https://aimo14913.github.io/ai-knowledge-distillation.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://aimo14913.github.io/aimo-ai-articles/articles/2026/ai-tools-directors-first-class/</loc>
+    <loc>https://aimo14913.github.io/ai-director-first-class.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://aimo14913.github.io/aimo-ai-articles/articles/2026/ordinary-person-ai-system/</loc>
+    <loc>https://aimo14913.github.io/ordinary-person-ai-system.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
