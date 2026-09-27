@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AI 短劇人物一直變、鏡頭接不起來？四步修正方法｜Aimo 吳宥婕</title>
+  <meta name="description" content="AI 短劇劇本寫好後，人物仍變臉、服裝道具跳動、鏡頭接不起來？Aimo 分享角色鎖定、分段生成、逐鏡檢查與低畫質預演的實作方法。">
+  <meta name="author" content="Aimo 吳宥婕"><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+  <link rel="canonical" href="https://aimo14913.github.io/ai-short-drama-continuity.html">
+  <meta property="og:type" content="article"><meta property="og:locale" content="zh_TW"><meta property="og:site_name" content="AIMO AI Office">
+  <meta property="og:title" content="劇本明明寫好了，AI 短劇為什麼還是人物一直變、鏡頭接不起來？"><meta property="og:description" content="用角色鎖定、分段生成、逐鏡檢查與預演，改善 AI 短劇人物與鏡頭不連續。">
+  <meta property="og:url" content="https://aimo14913.github.io/ai-short-drama-continuity.html"><meta property="og:image" content="https://images.vocus.cc/93069583-b764-4f2e-ad0e-3eacf64b615a.png">
+  <meta property="article:published_time" content="2026-09-27"><meta property="article:modified_time" content="2026-09-27"><meta property="article:author" content="Aimo 吳宥婕">
+  <link rel="icon" href="aimo-mascot.png"><link rel="stylesheet" href="articles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://aimo14913.github.io/ai-short-drama-continuity.html#article","headline":"劇本明明寫好了，AI 短劇為什麼還是人物一直變、鏡頭接不起來？","description":"用角色鎖定、分段生成、逐鏡檢查與預演，改善 AI 短劇人物與鏡頭不連續。","datePublished":"2026-09-27","dateModified":"2026-09-27","inLanguage":"zh-Hant","mainEntityOfPage":"https://aimo14913.github.io/ai-short-drama-continuity.html","image":"https://images.vocus.cc/93069583-b764-4f2e-ad0e-3eacf64b615a.png","keywords":["AI 短劇","角色一致性","分鏡","運鏡","影片生成","Seedance"],"author":{"@id":"https://aimo14913.github.io/#aimo"},"publisher":{"@id":"https://aimo14913.github.io/#aimo"},"isPartOf":{"@id":"https://aimo14913.github.io/#website"},"citation":"https://vocus.cc/article/6ab9003cfd8978000159130d"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://aimo14913.github.io/"},{"@type":"ListItem","position":2,"name":"文章","item":"https://aimo14913.github.io/#articles"},{"@type":"ListItem","position":3,"name":"AI 短劇人物與鏡頭連續性","item":"https://aimo14913.github.io/ai-short-drama-continuity.html"}]}]}
+  </script>
+</head>
+<body>
+<header class="site"><nav class="nav"><a class="logo" href="./">aimo<span>.</span></a><div class="nav-links"><a href="./#articles">所有文章</a><a href="./">首頁</a></div></nav></header>
+<main class="article-shell">
+  <nav class="breadcrumbs" aria-label="麵包屑"><a href="./">首頁</a> ／ <a href="./#articles">文章</a> ／ AI 短劇人物與鏡頭連續性</nav>
+  <article>
+    <header class="article-head"><div class="eyebrow">AI SHORT DRAMA · STORYBOARD</div><h1>劇本明明寫好了，AI 短劇為什麼還是人物一直變、鏡頭接不起來？</h1><div class="article-meta"><span>作者：<a rel="author" href="./#about">Aimo 吳宥婕</a></span><time datetime="2026-09-27">發布：2026 年 9 月 27 日</time><span>原文同步自 <a href="https://vocus.cc/article/6ab9003cfd8978000159130d" rel="alternate">Vocus</a></span></div></header>
+    <p class="summary"><strong>先說結論：</strong>AI 短劇不穩定時，不一定要先換模型或加長提示詞。先鎖定角色、拆開動作、交代鏡頭與情緒，再確認上一鏡的結束能不能接到下一鏡的開始。</p>
+    <nav class="toc" aria-label="文章目錄"><strong>四個實作步驟</strong><ol><li><a href="#lock">鎖定角色</a></li><li><a href="#segments">拆成可控制的時間段</a></li><li><a href="#shots">逐鏡寫清楚</a></li><li><a href="#preview">先做分鏡預演</a></li></ol></nav>
+    <div class="article-body">
+      <p>做 AI 短劇時，我剛開始嘗試，常遇到一個很挫折的情況：劇本明明寫好了，誰先進門、誰說話、誰生氣、最後發生什麼轉折，全都很清楚；開始製作後，畫面卻不一定照著劇本走。</p>
+      <p>同一個角色到了下一個鏡頭，臉突然不一樣；衣服、髮型或手上的道具改變；上一鏡還站在門口，下一鏡突然坐到沙發；台詞在講生氣，人物表情卻很平靜。每個鏡頭單獨看都漂亮，剪在一起卻像不同支影片。</p>
+      <p>一開始，我也會一直修改提示詞，或換一個模型再試。但生成次數越多，我越發現：如果同一個問題反覆出現，可能不是提示詞不夠長，而是前面的製作流程少了一層。</p>
+      <div class="note"><strong>劇本是寫給人理解的故事；影片模型需要的是可以逐秒執行的畫面指令。</strong></div>
+      <h2>劇本完成，不代表已經可以直接生成</h2>
+      <p>看到「女主角生氣地走進房間，質問男主角」時，人可以自己想像很多細節。但影片模型需要更明確的資料：角色外觀與服裝、移動方向、彼此位置與視線、可見的情緒動作、鏡頭景別、完成秒數，以及下一鏡要從什麼狀態接下去。</p>
+      <p>如果這些內容沒有先定義，模型就會替我們決定。每次生成補出的答案都可能不同，人物與鏡頭自然不容易連續。</p>
+      <h2 id="lock">第一步：先把角色鎖定，不要每鏡重新介紹</h2>
+      <p>我會先替主要角色建立固定的「建模」資料，包括年齡範圍與外觀特徵、臉型、髮型與髮色、固定服裝與配件、身形、聲音音色和表情習慣。</p>
+      <p>不能只寫「漂亮的年輕女性」，因為這個描述每次都可能生成不同的人。同一場戲若沒有換裝，就不要在下一個鏡頭重新改寫服裝；手上拿著手機，下一鏡也要交代手機去了哪裡。</p>
+      <p>角色一致不只是臉長得像，還包括服裝、道具、情緒與上一個動作有沒有延續。</p>
+      <h2 id="segments">第二步：不要一次生成整場戲，先拆成可控制的時間段</h2>
+      <p>一場戲可能有進門、對視、質問、反應與轉折。如果把所有事件一次塞進十幾秒，模型容易省略動作、改變順序，或讓角色同時完成太多事情。</p>
+      <ol><li><strong>0～4 秒：</strong>女主角推門進入，停在門口，看見房內的男主角。</li><li><strong>4～9 秒：</strong>女主角快步走近並質問；鏡頭由中景推到近景。</li><li><strong>9～15 秒：</strong>男主角先移開視線，再抬頭回應；女主角由憤怒轉成錯愕。</li></ol>
+      <p>每一段只處理一個主要變化，模型比較容易知道什麼先發生、什麼後發生。</p>
+      <h2 id="shots">第三步：每個鏡頭都要寫清楚</h2>
+      <p>整理分鏡時，我會讓每一鏡至少回答五個問題：</p>
+      <ol><li>畫面裡有誰？</li><li>角色現在在哪裡？</li><li>角色正在做什麼？</li><li>臉部表情與視線往哪裡？</li><li>運鏡與攝影機的方向是什麼？</li></ol>
+      <h2 id="preview">第四步：先做分鏡預演，再生成正式畫面</h2>
+      <p>正式生成前，可以先用分鏡表、首尾幀、簡單動態預演，甚至方塊人物，確認人物位置、走位、鏡頭軸線、台詞與動作時間、前後鏡銜接，以及情緒轉變是否有足夠時間被看見。</p>
+      <p>這個階段不追求成片漂亮，而是提早找出結構問題。如果連簡單預演都接不起來，直接進入正式生成，通常只會花更多次數反覆抽卡。</p>
+      <h2>這些需要做到全自動嗎？</h2>
+      <p>不用一開始就全自動。AI 可以協助把劇本拆成角色表、場景表、分鏡與提示詞，也可以檢查前後鏡頭資訊是否一致；但故事節奏、人物情緒、鏡頭選擇，以及哪一個生成結果真正適合劇情，仍需要人的判斷。</p>
+      <ol><li>人先確認劇情與角色。</li><li>AI 協助拆解分鏡與時間。</li><li>用預演檢查走位和鏡頭。</li><li>人確認後再生成正式片段。</li><li>逐鏡驗收人物、動作、情緒與銜接。</li><li>通過後才進入剪輯、聲音與背景音樂製作。</li></ol>
+      <p><strong>AI 可以加快拆解和整理，但不能跳過導演的思維。</strong></p>
+      <h2>真正要控制的，是前後狀態</h2>
+      <p>AI 短劇做不穩定時，不一定要先換模型，也不一定要把提示詞寫得更長。先檢查角色有沒有鎖定、動作有沒有拆開、鏡頭有沒有交代、情緒有沒有可見，以及上一鏡的結束能不能接到下一鏡的開始。</p>
+      <p>當故事被拆成可以檢查的畫面與動作，AI 才比較有機會把劇本真正拍出來。</p>
+    </div>
+    <aside class="author-box"><img src="aimo-mascot.png" alt="Aimo 吳宥婕"><div><strong>Aimo 吳宥婕｜AIMO AI Office</strong><br><span>用 Codex 整理資料與工作流程，以 AI 短劇和自媒體讓想法被看見，再用內容網站沉澱作品、觀點與服務。</span></div></aside>
+  </article>
+</main>
+<footer><div class="wrap"><strong>AIMO AI Office｜Aimo 吳宥婕與協作團隊</strong><p><a href="./#articles">回到所有文章</a> · <a href="mailto:porsche232323@gmail.com">聯絡 Aimo</a></p></div></footer>
+</body></html>
