@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>文章資料庫｜Aimo 艾摸</title>
+  <meta name="description" content="Aimo 艾摸的文章資料庫，整理 AI 短劇、Codex、AI 工作流、內容系統與一人公司的實作文章。">
+  <meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://aimo14913.github.io/articles.html">
+  <link rel="icon" href="aimo-mascot.png"><link rel="stylesheet" href="articles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    .archive { max-width:1180px; margin:0 auto; padding:72px 34px 120px; }
+    .archive-head { display:grid; grid-template-columns:1.2fr .8fr; gap:56px; align-items:end; margin-bottom:52px; }
+    .archive-head .eyebrow { color:var(--burn); font-family:var(--mono); letter-spacing:.18em; font-size:12px; }
+    .archive-head h1 { margin:12px 0 0; font-family:var(--serif); font-size:clamp(52px,8vw,92px); line-height:.95; letter-spacing:-.045em; }
+    .archive-head p { margin:0; color:var(--muted); font-size:17px; line-height:1.8; }
+    .filters { display:flex; flex-wrap:wrap; gap:10px; padding:22px 0 32px; border-top:1px solid var(--line); }
+    .filter { border:1px solid var(--line); background:transparent; color:var(--ink); border-radius:999px; padding:10px 16px; font:700 14px 'Noto Sans TC',sans-serif; cursor:pointer; }
+    .filter:hover,.filter.active { color:#fff; background:var(--burn); border-color:var(--burn); }
+    .archive-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+    .archive-card { min-height:310px; display:flex; flex-direction:column; padding:26px; border:1px solid var(--line); border-radius:14px; color:var(--ink); text-decoration:none; background:rgba(255,255,255,.2); transition:.25s; }
+    .archive-card:hover { transform:translateY(-4px); border-color:var(--burn); }
+    .archive-card[hidden] { display:none; }
+    .archive-card .meta { color:var(--burn); font-family:var(--mono); font-size:11px; line-height:1.7; letter-spacing:.1em; text-transform:uppercase; }
+    .archive-card h2 { margin:28px 0 12px; font-family:var(--serif); font-size:27px; line-height:1.3; letter-spacing:-.02em; }
+    .archive-card p { color:var(--muted); font-size:14px; line-height:1.7; }
+    .archive-card .arrow { margin-top:auto; padding-top:20px; color:var(--burn); font-size:22px; align-self:flex-end; }
+    .archive-card.featured { grid-column:span 2; background:var(--ink); color:var(--paper); }
+    .archive-card.featured h2 { font-size:clamp(32px,4vw,46px); }
+    .archive-card.featured p { color:rgba(237,229,211,.72); max-width:680px; }
+    @media(max-width:900px){.archive-head{grid-template-columns:1fr}.archive-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.archive-card.featured{grid-column:1/-1}}
+    @media(max-width:620px){.archive{padding:52px 20px 80px}.archive-grid{grid-template-columns:1fr}.archive-card,.archive-card.featured{grid-column:auto;min-height:260px}.archive-head h1{font-size:52px}}
+  </style>
+</head>
+<body>
+<header class="site"><nav class="nav"><a class="logo" href="./">aimo<span>.</span></a><div class="nav-links"><a href="./#works">作品與文章</a><a href="./">首頁</a></div></nav></header>
+<main class="archive">
+  <header class="archive-head"><div><div class="eyebrow">AIMO · WRITTEN WORK</div><h1>文章作品庫</h1></div><p>文章也是作品。這裡收錄我從 AI 短劇、Codex 到工作流與一人公司的實作整理，讓做過的事可以被搜尋、被理解、被複用。</p></header>
+  <div class="filters" aria-label="文章分類">
+    <button class="filter active" type="button" data-filter="all">全部</button><button class="filter" type="button" data-filter="drama">AI 短劇</button><button class="filter" type="button" data-filter="codex">Codex</button><button class="filter" type="button" data-filter="workflow">AI 工作流</button><button class="filter" type="button" data-filter="business">一人公司</button>
+  </div>
+  <section class="archive-grid" aria-live="polite">
+    <a class="archive-card featured" data-category="drama workflow" href="ai-short-drama-continuity.html"><div class="meta">2026.09.27 · AI 短劇</div><h2>劇本寫好了，為什麼人物還是一直變、鏡頭接不起來？</h2><p>角色鎖定、時間拆段、逐鏡描述與預演：讓 AI 短劇前後接得起來的四個步驟。</p><span class="arrow">→</span></a>
+    <a class="archive-card" data-category="business codex" href="ai-product-customer-first.html"><div class="meta">2026.09.26 · AI 產品</div><h2>AI 產品做出來卻找不到客戶？先驗證需求再開發</h2><p>先找客戶、驗證問題，再用 Codex 做 MVP。</p><span class="arrow">→</span></a>
+    <a class="archive-card" data-category="codex workflow" href="codex-work-delivery.html"><div class="meta">2026.09.24 · Codex</div><h2>Codex 適合不會寫程式的人嗎？</h2><p>零基礎創作者如何把工作拆成 AI 能執行、人能驗收的內容流程。</p><span class="arrow">→</span></a>
+    <a class="archive-card" data-category="workflow business" href="articles/"><div class="meta">企業實務 · AI 導入</div><h2>企業串接 AI 客服之前，沒人告訴你的兩個坑</h2><p>輸出責任與知識庫成本，是導入前要先看清楚的問題。</p><span class="arrow">→</span></a>
+    <a class="archive-card" data-category="codex workflow" href="aimo-ai-articles/articles/2026/ai-agent-claude-codex-logic/"><div class="meta">AI Agent · 工作流</div><h2>工具會死，邏輯不會</h2><p>建立跨模型的知識庫、Skill 與工作流程。</p><span class="arrow">→</span></a>
+    <a class="archive-card" data-category="business workflow" href="aimo-ai-articles/articles/2026/ai-bonus-belongs-to-system-builders/"><div class="meta">AI 系統 · 一人公司</div><h2>2026 年的 AI 紅利，屬於會搭系統的人</h2><p>從工具使用走向 Skills、工作流與 AI 編程。</p><span class="arrow">→</span></a>
+    <a class="archive-card" data-category="workflow" href="aimo-ai-articles/articles/2026/ai-knowledge-distillation/"><div class="meta">知識庫 · SOP</div><h2>AI 知識蒸餾：把大模型的腦子裝進自己的系統</h2><p>把判斷力沉澱成自己的 SOP、提示詞與工作流。</p><span class="arrow">→</span></a>
+    <a class="archive-card" data-category="drama" href="aimo-ai-articles/articles/2026/ai-tools-directors-first-class/"><div class="meta">AI 短劇 · 分鏡</div><h2>你以為在學 AI 工具，其實在學導演學院第一堂課</h2><p>九宮格分鏡法背後，是導演與分鏡的底層邏輯。</p><span class="arrow">→</span></a>
+    <a class="archive-card" data-category="drama workflow" href="aimo-ai-articles/articles/2026/ordinary-person-ai-system/"><div class="meta">普通人 · AI 系統</div><h2>從一支 60 秒短劇，跑通自己的 AI 內容線</h2><p>用短劇當入口、工作流當骨架，搭出可以複用的系統。</p><span class="arrow">→</span></a>
+  </section>
+</main>
+<footer><div class="wrap"><strong>AIMO AI Office｜Aimo 吳宥婕與協作團隊</strong><p><a href="./">回到首頁</a> · <a href="https://vocus.cc/salon/michelleaimo">Vocus</a></p></div></footer>
+<script>
+  document.querySelectorAll('.filter').forEach(button => button.addEventListener('click', () => {
+    document.querySelectorAll('.filter').forEach(item => item.classList.remove('active'));
+    button.classList.add('active');
+    const selected = button.dataset.filter;
+    document.querySelectorAll('.archive-card').forEach(card => {
+      card.hidden = selected !== 'all' && !card.dataset.category.split(' ').includes(selected);
+    });
+  }));
+</script>
+</body></html>

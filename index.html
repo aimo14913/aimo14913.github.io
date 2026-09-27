@@ -698,9 +698,11 @@
       line-height: 1.75;
     }
     .home-articles {
-      margin-top: 88px;
-      padding-top: 64px;
-      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding: 40px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: color-mix(in srgb, var(--card) 58%, transparent);
       scroll-margin-top: 90px;
     }
     .home-articles-head {
@@ -718,19 +720,33 @@
       color: var(--fg);
       line-height: 1.15;
     }
+    .home-articles-kicker {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--burn);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
     .home-articles-head p {
       max-width: 520px;
       margin: 0;
       color: var(--fg-soft);
       line-height: 1.75;
     }
-    .home-article-list { display: grid; gap: 16px; }
-    .home-article-card {
+    .home-article-list {
       display: grid;
-      grid-template-columns: 150px 1fr auto;
-      align-items: center;
-      gap: 28px;
-      padding: 28px 30px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .home-article-card {
+      display: flex;
+      min-height: 250px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 32px;
       border: 1px solid var(--border);
       border-radius: 12px;
       color: var(--fg);
@@ -743,6 +759,16 @@
       border-color: var(--burn);
       background: var(--bg-2);
     }
+    .home-article-card:first-child {
+      grid-column: 1 / -1;
+      min-height: 300px;
+      justify-content: flex-end;
+      background: var(--fg);
+      color: var(--bg);
+    }
+    .home-article-card:first-child h4 { color: var(--bg); font-size: clamp(30px, 4vw, 46px); max-width: 780px; }
+    .home-article-card:first-child p { color: color-mix(in srgb, var(--bg) 72%, transparent); max-width: 720px; }
+    .home-article-card:first-child .home-article-meta { color: var(--caramel); }
     .home-article-meta {
       font-family: var(--mono);
       font-size: 11px;
@@ -763,13 +789,33 @@
       font-size: 14px;
       line-height: 1.7;
     }
-    .home-article-arrow { color: var(--burn); font-size: 22px; }
+    .home-article-arrow { color: var(--burn); font-size: 22px; margin-top: auto; align-self: flex-end; }
+    .articles-all {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+    .articles-all a {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 22px;
+      border: 1px solid var(--fg);
+      border-radius: 6px;
+      color: var(--fg);
+      text-decoration: none;
+      font-weight: 700;
+      transition: background .2s, color .2s;
+    }
+    .articles-all a:hover { background: var(--fg); color: var(--bg); }
     @media (max-width: 880px) {
       .pillars { grid-template-columns: 1fr; }
       .home-articles-head { display: block; }
       .home-articles-head p { margin-top: 16px; }
-      .home-article-card { grid-template-columns: 1fr; gap: 12px; }
+      .home-article-list { grid-template-columns: 1fr; }
+      .home-article-card, .home-article-card:first-child { grid-column: auto; min-height: 220px; }
       .home-article-arrow { display: none; }
+      .home-articles { padding: 24px; }
     }
 
     /* ============================================================
@@ -1287,7 +1333,7 @@
       }
     }
   </style>
-<style>.mascot{width:108px !important;height:100px !important;}.mascot img.mascot-body{object-fit:contain;filter:drop-shadow(0 6px 10px rgba(0,0,0,.3));}</style>
+<style>.mascot{display:none !important;}</style>
 </head>
 <body>
 
@@ -1300,7 +1346,6 @@
         <li><a href="#about">關於</a></li>
         <li><a href="#works">作品</a></li>
         <li><a href="#hub">內容</a></li>
-        <li><a href="#articles">文章</a></li>
         <li><a href="#find">聯絡</a></li>
         <li><a href="https://vocus.cc/salon/michelleaimo">Vocus</a></li>
         <li><a href="#course">課程</a></li>
@@ -1447,14 +1492,14 @@
   <!-- ===================== 01 SELECTED WORK ===================== -->
   <section class="works" id="works">
     <div class="container">
-      <div class="section-label">01 · SELECTED WORK</div>
+      <div class="section-label">01 · WORKS &amp; ARTICLES</div>
       <h2 class="section-h2 reveal">
-        精選作品。<br>
-        <span class="it">先做出來，再講。</span>
+        作品與文章。<br>
+        <span class="it">每一個成果，都看得見。</span>
       </h2>
       <p class="section-lead reveal">
-        產品是驗證想法的最終方式。這些是我自己跑通過的成品，
-        SOP、提示詞、工具棧全部開源，<strong>沒做過的事不會出現在這裡。</strong>
+        短劇、SOP、學員案例與文章，都是我實際跑過後留下的成果。
+        <strong>沒做過的事不會出現在這裡。</strong>
       </p>
 
       <div class="works-grid">
@@ -1482,8 +1527,8 @@
       </div>
       <div class="home-articles" id="articles">
         <div class="home-articles-head">
-          <h3>aimo 的文章</h3>
-          <p>這裡是所有文章的入口。舊文與新文都會一直累積，保留各自原本的網址與內容。</p>
+          <div><span class="home-articles-kicker">WRITTEN WORK · 文章作品</span><h3>把做過的事，寫成能留下來的內容。</h3></div>
+          <p>這裡只展示近期與精選文章；完整內容收進文章資料庫，和短劇、流程與案例一起構成我的作品。</p>
         </div>
         <div class="home-article-list" aria-label="aimo 文章列表">
           <a class="home-article-card" href="ai-short-drama-continuity.html">
@@ -1534,31 +1579,8 @@
             </div>
             <span class="home-article-arrow" aria-hidden="true">→</span>
           </a>
-          <a class="home-article-card" href="aimo-ai-articles/articles/2026/ai-knowledge-distillation/">
-            <div class="home-article-meta">既有文章<br>知識庫 · SOP</div>
-            <div>
-              <h4>AI 知識蒸餾：把大模型的腦子，裝進你自己的系統</h4>
-              <p>把大模型的判斷力沉澱成自己的 SOP、提示詞與工作流，而不是每次重新問一次。</p>
-            </div>
-            <span class="home-article-arrow" aria-hidden="true">→</span>
-          </a>
-          <a class="home-article-card" href="aimo-ai-articles/articles/2026/ai-tools-directors-first-class/">
-            <div class="home-article-meta">既有文章<br>AI 短劇 · 分鏡</div>
-            <div>
-              <h4>你以為在學 AI 工具，其實在學導演學院第一堂課</h4>
-              <p>AI 影片的九宮格分鏡法，核心不是工具名稱，而是導演與分鏡的底層邏輯。</p>
-            </div>
-            <span class="home-article-arrow" aria-hidden="true">→</span>
-          </a>
-          <a class="home-article-card" href="aimo-ai-articles/articles/2026/ordinary-person-ai-system/">
-            <div class="home-article-meta">既有文章<br>普通人 · AI 系統</div>
-            <div>
-              <h4>普通人的 AI 系統長這樣：從一支 60 秒短劇跑通自己的線</h4>
-              <p>用 AI 短劇當入口、工作流當骨架，逐步搭出可被自己掌握、可以複用的 AI 系統。</p>
-            </div>
-            <span class="home-article-arrow" aria-hidden="true">→</span>
-          </a>
         </div>
+        <div class="articles-all"><a href="articles.html">查看全部文章 <span aria-hidden="true">→</span></a></div>
       </div>
     </div>
   </section>
@@ -1967,7 +1989,7 @@
           <a href="https://vocus.cc/salon/michelleaimo">Vocus</a>
           <a href="https://instagram.com/aurora_michelle14913">Instagram</a>
           <a href="https://www.threads.com/@aurora_michelle14913">Threads</a>
-          <a href="#articles">文章</a>
+          <a href="articles.html">文章</a>
           <a href="mailto:porsche232323@gmail.com">Email</a>
           <a href="#course">課程</a>
           <a href="#terms">影像使用規範</a>

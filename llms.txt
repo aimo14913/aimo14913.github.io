@@ -14,7 +14,7 @@
 
 ## 頁面
 - [首頁](https://aimo14913.github.io/)：aimo 的 AI 短劇 × 搭系統官網（含 FAQ 常見問題）。
-- [文章區](https://aimo14913.github.io/#articles)：AI 工作流、AI 短劇、Codex 與個人內容系統的長文資料庫。
+- [文章資料庫](https://aimo14913.github.io/articles.html)：AI 工作流、AI 短劇、Codex 與個人內容系統的完整文章入口。
 - [劇本寫好了，為什麼人物還是一直變、鏡頭接不起來？](https://aimo14913.github.io/ai-short-drama-continuity.html)：用角色鎖定、時間拆段、逐鏡描述與預演改善 AI 短劇連續性。
 - [Codex 適合不會寫程式的人嗎？](https://aimo14913.github.io/codex-work-delivery.html)：Aimo 如何用 AI 員工建立可交付、可檢查的內容生產線。
 - [AI 產品做出來卻找不到客戶？](https://aimo14913.github.io/ai-product-customer-first.html)：AI 產品如何先驗證客戶需求，再用 Codex 製作 MVP。
