@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
-    <title>AIMO AI Office｜Aimo 吳宥婕</title><link>https://aimo14913.github.io/</link><description>Codex、AI 內容生產線、AI 短劇與 AI 自媒體的實作內容。</description><language>zh-TW</language><lastBuildDate>Sun, 27 Sep 2026 22:00:00 +0800</lastBuildDate>
+    <title>AIMO AI Office｜Aimo 吳宥婕</title><link>https://aimo14913.github.io/</link><description>Codex、AI 內容生產線、AI 短劇與 AI 自媒體的實作內容。</description><language>zh-TW</language><lastBuildDate>Mon, 28 Sep 2026 14:10:43 +0800</lastBuildDate>
+    <item><title>資料明明都存了，工作時為什麼還是找不到？知識庫＋Codex 實作</title><link>https://aimo14913.github.io/knowledge-base-codex-workflow.html</link><guid isPermaLink="true">https://aimo14913.github.io/knowledge-base-codex-workflow.html</guid><pubDate>Mon, 28 Sep 2026 14:10:40 +0800</pubDate><description>從一件重複工作開始，讓散落的資料、規則與工作經驗變成真正可用的知識系統。</description></item>
     <item><title>劇本明明寫好了，AI 短劇為什麼還是人物一直變、鏡頭接不起來？</title><link>https://aimo14913.github.io/ai-short-drama-continuity.html</link><guid isPermaLink="true">https://aimo14913.github.io/ai-short-drama-continuity.html</guid><pubDate>Sun, 27 Sep 2026 21:54:30 +0800</pubDate><description>用角色鎖定、分段生成、逐鏡檢查與預演，改善 AI 短劇人物與鏡頭不連續。</description></item>
     <item><title>Aimo 吳宥婕與 AIMO AI Office 官方品牌資料</title><link>https://aimo14913.github.io/ai-discovery.html</link><guid isPermaLink="true">https://aimo14913.github.io/ai-discovery.html</guid><pubDate>Sat, 26 Sep 2026 00:00:00 +0800</pubDate><description>Aimo 的品牌、文章、社群帳號與 AI 產品官方關係入口。</description></item>
     <item><title>Codex 適合不會寫程式的人嗎？Aimo 的 AI 員工內容生產線</title><link>https://aimo14913.github.io/codex-work-delivery.html</link><guid isPermaLink="true">https://aimo14913.github.io/codex-work-delivery.html</guid><pubDate>Sat, 26 Sep 2026 00:00:00 +0800</pubDate><description>零基礎創作者如何把工作拆成 AI 能執行、人能驗收的內容生產流程。</description></item>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>資料明明都存了，工作時為什麼還是找不到？知識庫＋Codex 實作｜Aimo 吳宥婕</title>
+  <meta name="description" content="資料存起來不代表用得起來。Aimo 分享如何用知識庫加 Codex，從一件重複工作開始，讓資料、規則與做過的決定變成可複用的 AI 資產。">
+  <meta name="author" content="Aimo 吳宥婕"><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+  <link rel="canonical" href="https://aimo14913.github.io/knowledge-base-codex-workflow.html">
+  <meta property="og:type" content="article"><meta property="og:locale" content="zh_TW"><meta property="og:site_name" content="AIMO AI Office">
+  <meta property="og:title" content="資料明明都存了，工作時為什麼還是找不到？"><meta property="og:description" content="用知識庫＋Codex，讓散落的資料變成真的能完成工作的知識系統。">
+  <meta property="og:url" content="https://aimo14913.github.io/knowledge-base-codex-workflow.html"><meta property="og:image" content="https://images.vocus.cc/df172072-887c-48e1-87d0-c29849808796.png">
+  <meta property="article:published_time" content="2026-09-28"><meta property="article:modified_time" content="2026-09-28"><meta property="article:author" content="Aimo 吳宥婕">
+  <link rel="icon" href="aimo-mascot.png"><link rel="stylesheet" href="articles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://aimo14913.github.io/knowledge-base-codex-workflow.html#article","headline":"資料明明都存了，工作時為什麼還是找不到？我用知識庫＋Codex讓經驗真正被用起來","description":"Aimo 分享如何用知識庫加 Codex，讓散落的資料、規則與工作經驗變成可複用的 AI 資產。","datePublished":"2026-09-28","dateModified":"2026-09-28","inLanguage":"zh-Hant","mainEntityOfPage":"https://aimo14913.github.io/knowledge-base-codex-workflow.html","image":"https://images.vocus.cc/df172072-887c-48e1-87d0-c29849808796.png","keywords":["知識庫","Codex","AI 工作流","AI 資產","內容生產線"],"author":{"@id":"https://aimo14913.github.io/#aimo"},"publisher":{"@id":"https://aimo14913.github.io/#aimo"},"isPartOf":{"@id":"https://aimo14913.github.io/#website"},"citation":"https://vocus.cc/article/6ab92fe4fd8978000163e0c2"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"資料很多，為什麼還不算知識庫？","acceptedAnswer":{"@type":"Answer","text":"只有資料被標明用途、正式版本與使用情境，並且能在工作時被找到與使用，才會形成真正的知識系統。"}},{"@type":"Question","name":"知識庫應該一次整理完嗎？","acceptedAnswer":{"@type":"Answer","text":"不用。先選一件每週重複的工作，整理完成它真正需要的資料，跑通後再逐步擴大。"}},{"@type":"Question","name":"Codex 如何使用個人知識庫？","acceptedAnswer":{"@type":"Answer","text":"先讓 Codex 讀取定位、案例、規則與驗收標準，再開始執行任務；完成後由人檢查並把確認過的經驗補回知識庫。"}}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://aimo14913.github.io/"},{"@type":"ListItem","position":2,"name":"文章","item":"https://aimo14913.github.io/articles.html"},{"@type":"ListItem","position":3,"name":"知識庫＋Codex","item":"https://aimo14913.github.io/knowledge-base-codex-workflow.html"}]}]}
+  </script>
+</head>
+<body>
+<header class="site"><nav class="nav"><a class="logo" href="./">aimo<span>.</span></a><div class="nav-links"><a href="articles.html">所有文章</a><a href="./">首頁</a></div></nav></header>
+<main class="article-shell">
+  <nav class="breadcrumbs" aria-label="麵包屑"><a href="./">首頁</a> ／ <a href="articles.html">文章</a> ／ 知識庫＋Codex</nav>
+  <article>
+    <header class="article-head"><div class="eyebrow">KNOWLEDGE BASE · CODEX</div><h1>資料明明都存了，工作時為什麼還是找不到？</h1><div class="article-meta"><span>作者：<a rel="author" href="./#about">Aimo 吳宥婕</a></span><time datetime="2026-09-28">發布：2026 年 9 月 28 日</time><span>原文同步自 <a href="https://vocus.cc/article/6ab92fe4fd8978000163e0c2" rel="alternate">vocus</a></span></div></header>
+    <p class="summary"><strong>先說結論：</strong>資料很多不叫知識庫。能在對的時間找到、看懂，而且真的拿來完成工作，才叫知識系統。</p>
+    <nav class="toc" aria-label="文章目錄"><strong>這篇文章會談到</strong><ol><li><a href="#not-files">資料很多，為什麼不等於知識庫？</a></li><li><a href="#start-small">為什麼不要一次整理全部？</a></li><li><a href="#codex">如何讓 Codex 先讀資料再做事？</a></li><li><a href="#feedback">怎麼把做過的經驗留下來？</a></li></ol></nav>
+    <div class="article-body">
+      <p>很多人應該都有跟我一樣的經驗。明明學了很多課、做了一堆筆記，也存了很多檔案、網址、聊天紀錄；結果真的要工作的時候，還是會重新問 AI：「這個之前我是不是做過？」「那份資料到底放哪裡？」「這一份是最新版嗎？」「我上次最後到底是怎麼決定的？」</p>
+      <p>我自己在整理課程、AI 短劇、文章內容和 AI 工作流程時，也很常遇到這個問題。不是沒有資料，而是資料太多，而且散得到處都是。有些在 Google Drive，有些在聊天紀錄、筆記或不同資料夾。</p>
+      <p>最麻煩的是，找到資料還不算結束。我還要判斷這是不是最新版、是不是已經確定要用的內容，以及這個方法現在還適不適用。做到後來我才真的發現：<strong>資料存起來，不代表你真的用得起來。</strong></p>
+      <h2 id="not-files">資料很多，不一定叫知識庫</h2>
+      <p>以前我想到「知識庫」，第一個反應也是：把資料全部丟進去不就好了？但真的開始用之後，我才發現事情沒有這麼簡單。資料若常常找不到，時間還是會浪費在搜尋上。</p>
+      <p>所以我會先確認幾件事情：這份資料是什麼、放在哪裡、哪一份才是正式版本，以及找到之後要拿它做什麼。這些沒有先整理好，就算換一個更厲害的 AI，也只是讓它更快進入我的「倉庫」找東西。</p>
+      <h2 id="start-small">我後來不再一次整理全部資料</h2>
+      <p>我以前常犯一個錯誤：一想到整理知識庫，就想把所有資料一次整理好。結果整理兩三個小時就累了，而且資料永遠整理不完。</p>
+      <p>所以我現在會先選一件真的常常在做的事情，例如：</p>
+      <ul><li>寫一篇符合自己定位的文章</li><li>準備一堂課</li><li>回覆學員常見問題</li><li>整理客戶需求</li><li>把文章改成短影音腳本</li><li>做一支 AI 短劇</li></ul>
+      <p>接著我會想：完成這件工作到底需要哪些資料？假設我要寫一篇像我口吻的文章，就要先準備我的定位、對話對象、真實案例、常用語氣、可說與不可亂承諾的內容，以及什麼成果才算「像我」。</p>
+      <div class="note"><strong>知識庫不是資料越多越厲害，</strong><br>而是需要的資料能不能馬上找得到。</div>
+      <h2 id="codex">我現在使用 Codex，會先叫它找資料</h2>
+      <p>我以前用 AI，也會在每個新對話框重新介紹自己：我是誰、我做什麼、客戶是誰、想要什麼語氣。每次都講一次，真的很累；少講一件事，AI 做出來的東西就可能完全不同。</p>
+      <p>所以我現在使用 Codex 或其他 AI 工作流程時，會先叫它讀資料，再開始做事。我會把手上的資料和想表達的重點交給 AI，請它先整理，再按照我的觀點改寫成文章。</p>
+      <p>寫完後，我仍會自己再看一次，把太像 AI、不是我會說的話，或根本不是我做過的事情刪掉。真正重要的不是提示詞寫得多厲害，而是：<strong>AI 到底知不知道答案要去哪裡找。</strong>來源清楚，做出來的內容才比較穩定。</p>
+      <h2 id="feedback">做完一次工作，不要又讓經驗消失</h2>
+      <p>我們常常完成一個工作後就結束了，下次遇到同樣的事情，又重新來一次。但每一次工作裡都會產生新經驗：哪個方法有效、哪一段最後被刪掉、客戶問了什麼，以及學員卡在哪裡。</p>
+      <p>如果這些沒有留下來，下次還是得重新想一次。真正有用的知識庫不是「整理一次」，而是每次做完事情，都把已經確認過的經驗放回去。下一次做相似工作，就不用從零開始。這時，資料才會從存檔變成能使用的工作經驗，成為自己的 AI 資產。</p>
+      <h2>AI 真正幫我留下來的，不只是答案</h2>
+      <p>AI 真正有價值的地方，不只是幫我生出一篇文章、一份簡報或一個答案，而是它能不能幫我把「我怎麼做事情」慢慢留下來：哪些資料要用、哪些規則不能違反、什麼叫認可的成果、上次出了什麼問題，以及這次又改了什麼。</p>
+      <p>如果你手上也有一大堆檔案、筆記和聊天紀錄，先不要想著把所有資料整理完。先選一件每個禮拜會重複做的工作，再讓 AI 按照這些資料真的完成一次。如果流程跑得動，再慢慢擴大。</p>
+      <h2>常見問題</h2>
+      <h3>資料很多，為什麼還不算知識庫？</h3><p>只有資料被標明用途、正式版本與使用情境，並且能在工作時被找到、看懂與使用，才會形成真正的知識系統。</p>
+      <h3>知識庫應該一次整理完嗎？</h3><p>不用。先選一件每週重複的工作，整理完成它真正需要的資料，跑通後再逐步擴大。</p>
+      <h3>Codex 如何使用個人知識庫？</h3><p>先讓 Codex 讀取定位、案例、規則與驗收標準，再開始執行任務；完成後由人檢查，並把確認過的經驗補回知識庫。</p>
+    </div>
+    <aside class="author-box"><img src="aimo-mascot.png" alt="Aimo 吳宥婕"><div><strong>Aimo 吳宥婕｜AIMO AI Office</strong><br><span>用 Codex 教零基礎小白打造 AI 內容生產線；以 AI 短劇與 AI 自媒體作為看得見的內容入口。</span></div></aside>
+  </article>
+</main>
+<footer><div class="wrap"><strong>AIMO AI Office｜Aimo 吳宥婕與協作團隊</strong><p><a href="articles.html">回到所有文章</a> · <a href="mailto:porsche232323@gmail.com">聯絡 Aimo</a></p></div></footer>
+</body>
+</html>

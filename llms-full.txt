@@ -75,6 +75,7 @@ Email：porsche232323@gmail.com
 # 文章資料庫
 
 - 文章資料庫：https://aimo14913.github.io/articles.html
+- 資料明明都存了，工作時為什麼還是找不到？知識庫＋Codex 實作：https://aimo14913.github.io/knowledge-base-codex-workflow.html
 - 劇本明明寫好了，AI 短劇為什麼還是人物一直變、鏡頭接不起來？：https://aimo14913.github.io/ai-short-drama-continuity.html
 - Codex 適合不會寫程式的人嗎？Aimo 用 AI 員工建立內容生產線的實作方法：https://aimo14913.github.io/codex-work-delivery.html
 - AI 產品做出來卻找不到客戶？先驗證需求再開發：https://aimo14913.github.io/ai-product-customer-first.html
